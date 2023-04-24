@@ -3,7 +3,7 @@ body {
   padding: 0;
 }
 
-.login-wrapper {
+.register-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +25,7 @@ body {
   }
 }
 
-.auth-inputs {
+.register-inputs {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -47,7 +47,7 @@ body {
   left: 20px;
 }
 
-.login-btn {
+.register-btn {
   width: 100%;
   height: 50px;
   cursor: pointer;
@@ -62,56 +62,17 @@ body {
   margin-top: 20px;
 }
 
-.login-btn:hover {
-    transition: all 300ms;
-    background-color: #004c75;
-  }
-
-.hr-text {
-  line-height: 1em;
-  position: relative;
-  outline: 0;
-  border: 0;
-  color: black;
-  text-align: center;
-  height: 1.5em;
-  opacity: 0.5;
-  &:after {
-    content: attr(data-content);
-    position: relative;
-    display: inline-block;
-    color: black;
-
-    padding: 0 0.5em;
-    line-height: 1.5em;
-    color: #818078;
-    background-color: #fcfcfa;
-  }
+.register-btn:hover {
+  transition: all 300ms;
+  background-color: #004c75;
 }
 
-.go-to-signup {
+.go-to-signin {
   font-family: system-ui;
   font-size: 16px;
 }
 
-.join-now {
-  color: #0072b1;
-  font-family: system-ui;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-}
 
-.forgot-password {
-  color: #0072b1;
-  font-family: system-ui;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-}
 
-.google-btn-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
+
