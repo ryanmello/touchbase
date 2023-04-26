@@ -1,0 +1,41 @@
+.topbar-main{
+    width: 100%;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.87);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar-logo{
+    width: 60px;
+    margin-left: 40px;
+}
+
+.react-icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.react-icon{
+    cursor: pointer;
+    margin-right: 30px;
+    color: rgb(90, 90, 90);
+}
+
+.react-icon:hover{
+    color: rgb(0, 0, 0);
+}
+
+.user-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 40px;
+}
+
+.user{
+    width: 30px;
+}
