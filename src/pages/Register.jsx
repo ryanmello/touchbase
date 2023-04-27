@@ -1,12 +1,12 @@
-import React from 'react'
-import RegisterComponent from '../components/RegisterComponent'
+import React from "react";
+import RegisterComponent from "../components/RegisterComponent";
 
 const Register = () => {
   return (
     <div>
       <RegisterComponent />
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

@@ -1,20 +1,29 @@
 import React from "react";
 import "./PostModal.scss";
-import { Modal } from "antd";
+import { Button, Modal } from "antd";
 
-const PostModal = ({ modalOpen, setModalOpen }) => {
+const PostModal = ({ modalOpen, setModalOpen, status, setStatus }) => {
+
+
   return (
     <div>
       <Modal
-        title="Vertically centered modal dialog"
+        title="Create a post"
         centered
         open={modalOpen}
         onOk={() => setModalOpen(false)}
         onCancel={() => setModalOpen(false)}
+        footer={[
+          <Button key="submit" type="primary" disabled={status.length > 0 ? false : true}>
+            Post
+          </Button>
+        ]}
       >
-        <p>some contents...</p>
-        <p>some contents...</p>
-        <p>some contents...</p>
+        <textarea
+          placeholder="What do you want to talk about?"
+          className="modal-textarea"
+          onChange={(event) => setStatus(event.target.value)}
+        ></textarea>
       </Modal>
     </div>
   );

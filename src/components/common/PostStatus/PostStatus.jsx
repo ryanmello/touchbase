@@ -5,6 +5,7 @@ import PostModal from "../PostModal/PostModal";
 
 const PostStatus = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [status, setStatus] = useState("");
 
   return (
     <div className="post-status-container">
@@ -13,7 +14,12 @@ const PostStatus = () => {
           Start a post
         </button>
       </div>
-      <PostModal modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+      <PostModal
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        status={status}
+        setStatus={setStatus}
+      />
     </div>
   );
 };
