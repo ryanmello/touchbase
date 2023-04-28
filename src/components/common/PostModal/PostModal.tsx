@@ -2,9 +2,13 @@ import React from "react";
 import "./PostModal.scss";
 import { Button, Modal } from "antd";
 
-const PostModal = ({ modalOpen, setModalOpen, status, setStatus }) => {
-
-
+const PostModal = ({
+  modalOpen,
+  setModalOpen,
+  status,
+  setStatus,
+  sendStatus,
+}) => {
   return (
     <div>
       <Modal
@@ -14,9 +18,14 @@ const PostModal = ({ modalOpen, setModalOpen, status, setStatus }) => {
         onOk={() => setModalOpen(false)}
         onCancel={() => setModalOpen(false)}
         footer={[
-          <Button key="submit" type="primary" disabled={status.length > 0 ? false : true}>
+          <Button
+            onClick={sendStatus}
+            key="submit"
+            type="primary"
+            disabled={status.length > 0 ? false : true}
+          >
             Post
-          </Button>
+          </Button>,
         ]}
       >
         <textarea

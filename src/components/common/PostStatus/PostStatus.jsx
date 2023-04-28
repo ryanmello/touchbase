@@ -2,10 +2,16 @@ import React from "react";
 import "./PostStatus.scss";
 import { useState } from "react";
 import PostModal from "../PostModal/PostModal";
+import { postStatus } from "../../../api/FirestoreAPI";
 
 const PostStatus = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
+
+  const sendStatus = () => {
+    postStatus(status);
+    setModalOpen(false);
+  };
 
   return (
     <div className="post-status-container">
@@ -19,6 +25,7 @@ const PostStatus = () => {
         setModalOpen={setModalOpen}
         status={status}
         setStatus={setStatus}
+        sendStatus={sendStatus}
       />
     </div>
   );
