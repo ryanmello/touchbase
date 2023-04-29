@@ -1,0 +1,18 @@
+.post-card-container{
+    max-width: 80%;
+    width: 800px;
+
+    .post-card{
+        display: flex;
+        align-items: center;
+        height: 100px;
+        background-color: white;
+        margin-top: 10px;
+        padding: 20px;
+        border-radius: 10px;
+
+        .post-card-status{
+            font-size: 14px;
+        }
+    }
+}
