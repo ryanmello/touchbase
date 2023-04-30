@@ -5,4 +5,33 @@
     background: white;
     margin: 30px;
     border-radius: 5px;
+    padding: 20px;
+    position: relative;
+
+    .edit-btn-container{
+        position: absolute;
+        right: 20px;
+        .edit-btn{
+            padding: 10px 20px 10px 20px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            background-color: #0073b1;
+            cursor: pointer;
+        }
+
+        .edit-btn:hover{
+            background-color: #005b8b;
+        }
+    }
+
+    .username{
+        color: black;
+        font-weight: 600;
+        font-size: 24px;
+    }
+
+    .email{
+        margin-top: -5px;
+    }
 }

@@ -37,7 +37,8 @@ const Topbar = () => {
       )}
 
 
-      <img className="topbar-logo" src={LinkedinLogo} alt="" />
+      {/* <img className="topbar-logo" src={LinkedinLogo} alt="" /> */}
+      <div className="topbar-logo">TouchBase</div>
       <div className="react-icons">
         <AiOutlineSearch size={25} className="react-icon"/>
         <AiOutlineHome size={25} className="react-icon" onClick={() => goToRoute("/home")}/>
