@@ -5,8 +5,9 @@ import PostModal from "../PostModal/PostModal";
 import { postStatus, getStatus } from "../../../api/FirestoreAPI";
 import PostCard from "../PostCard/PostCard";
 import { getCurrentTimeStamp } from "../../../helpers/useMoment";
+import { getUniqueId } from "../../../helpers/getUniqueId";
 
-const PostStatus = () => {
+const PostStatus = ({ currentUser }) => {
   let userEmail = localStorage.getItem('userEmail')
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
@@ -17,6 +18,8 @@ const PostStatus = () => {
       status: status,
       timeStamp: getCurrentTimeStamp("LLL"),
       userEmail: userEmail,
+      userName: currentUser.name,
+
     };
 
     postStatus(object);

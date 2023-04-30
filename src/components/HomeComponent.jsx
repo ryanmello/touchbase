@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import PostStatus from './common/PostStatus/PostStatus';
 import '../sass/HomeComponent.scss'
 
-const HomeComponent = () => {
+const HomeComponent = ({ currentUser }) => {
   return (
     <div className='home-component'>
-      <PostStatus/>
+      <PostStatus currentUser={currentUser}/>
     </div>
   )
 }

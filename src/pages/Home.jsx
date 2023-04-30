@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/common/Loader/Loader";
 
-const Home = () => {
+const Home = ({ currentUser }) => {
   const redirect = useNavigate();
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +19,7 @@ const Home = () => {
     });
   }, []);
 
-  return loading ? <Loader /> : <HomeComponent />;
+  return loading ? <Loader /> : <HomeComponent currentUser={currentUser}/>;
 };
 
 export default Home;
