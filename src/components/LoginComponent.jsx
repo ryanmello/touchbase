@@ -13,6 +13,7 @@ const LoginComponent = () => {
   const login = async () => {
     try {
       let res = await LoginAPI(credentials.email, credentials.password);
+      localStorage.setItem('userEmail', res.user.email);
       toast.success("Success");
       redirect("/home");
     } catch (error) {

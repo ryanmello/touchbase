@@ -7,6 +7,7 @@ import PostCard from "../PostCard/PostCard";
 import { getCurrentTimeStamp } from "../../../helpers/useMoment";
 
 const PostStatus = () => {
+  let userEmail = localStorage.getItem('userEmail')
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [allPosts, setAllPosts] = useState([]);
@@ -15,6 +16,7 @@ const PostStatus = () => {
     let object = {
       status: status,
       timeStamp: getCurrentTimeStamp("LLL"),
+      userEmail: userEmail,
     };
 
     postStatus(object);

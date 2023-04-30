@@ -40,3 +40,10 @@
     cursor: pointer;
     width: 30px;
 }
+
+.popup-position{
+    position: absolute;
+    right: 10px;
+    top: 65px;
+    z-index: 100;
+}

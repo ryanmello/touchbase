@@ -1,0 +1,19 @@
+.profile-popup {
+  border: 1px solid #a8a8a8;
+  width: 200px;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px 10px 10px 10px;
+
+  .profile-popup-options {
+    list-style-type: none;
+
+    .profile-popup-option {
+      cursor: pointer;
+    }
+  }
+}

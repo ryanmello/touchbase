@@ -4,14 +4,19 @@
 
     .post-card{
         display: flex;
-        align-items: center;
-        height: 100px;
+        justify-content: center;
+        flex-direction: column;
+        height: auto;
         background-color: white;
         margin-top: 10px;
         padding: 20px;
         border-radius: 10px;
-
+        
         .post-card-status{
+            font-size: 14px;
+        }
+
+        .post-card-timestamp{
             font-size: 14px;
         }
     }

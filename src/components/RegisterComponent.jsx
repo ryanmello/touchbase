@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { LoginAPI, RegisterAPI, GoogleSignInAPI } from "../api/AuthApi";
+import { postUserData } from "../api/FirestoreAPI";
 import "../sass/RegisterComponent.scss";
 import LinkedInLogo from "../assets/linkedinLogo.png";
 import GoogleButton from "react-google-button";
@@ -13,11 +14,13 @@ const RegisterComponent = () => {
   const register = async () => {
     try {
       let res = await RegisterAPI(credentials.email, credentials.password);
-      toast.success('Success')
+      localStorage.setItem("userEmail", res.user.email);
+      postUserData({ name: credentials.name, email: credentials.email })
+      toast.success("Success");
       redirect("/home");
     } catch (error) {
       console.log(error);
-      toast.error('Error')
+      toast.error("Error");
     }
   };
 
@@ -28,6 +31,13 @@ const RegisterComponent = () => {
         <h1 className="heading">Register</h1>
         <p className="subheading">Make the most of your professional life</p>
         <div className="register-inputs">
+          <input
+            onChange={(e) =>
+              setCredentials({ ...credentials, name: e.target.value })
+            }
+            className="common-input"
+            placeholder="Name"
+          />
           <input
             onChange={(e) =>
               setCredentials({ ...credentials, email: e.target.value })
@@ -59,4 +69,4 @@ const RegisterComponent = () => {
   );
 };
 
-export default RegisterComponent
+export default RegisterComponent;
