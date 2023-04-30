@@ -19,7 +19,7 @@ const PostStatus = ({ currentUser }) => {
       timeStamp: getCurrentTimeStamp("LLL"),
       userEmail: userEmail,
       userName: currentUser.name,
-
+      postId: getUniqueId(),
     };
 
     postStatus(object);

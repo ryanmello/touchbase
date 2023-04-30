@@ -27,6 +27,7 @@ export const getStatus = (setAllPosts) => {
   });
 };
 
+// save user to firestore
 export const postUserData = (object) => {
   addDoc(userRef, object)
     .then(() => {})
