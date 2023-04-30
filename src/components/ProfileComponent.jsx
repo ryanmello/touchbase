@@ -1,11 +1,11 @@
 import React from 'react'
+import "../sass/ProfileComponent.scss";
+import ProfileCard from './common/ProfileCard/ProfileCard';
 
-const ProfileComponent = () => {
+const ProfileComponent = ({ currentUser }) => {
   return (
     <div className='profile-container'>
-        <div className=''>
-
-        </div>
+        <ProfileCard currentUser={currentUser}/>
     </div>
   )
 }

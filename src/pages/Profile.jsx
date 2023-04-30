@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/common/Loader/Loader";
 
-const Profile = () => {
+const Profile = ({ currentUser }) => {
   const redirect = useNavigate();
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +19,7 @@ const Profile = () => {
     });
   }, []);
 
-  return loading ? <Loader /> : <ProfileComponent />;
+  return loading ? <Loader /> : <ProfileComponent currentUser={currentUser}/>;
 };
 
 export default Profile;
