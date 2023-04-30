@@ -8,7 +8,6 @@ import { getCurrentTimeStamp } from "../../../helpers/useMoment";
 import { getUniqueId } from "../../../helpers/getUniqueId";
 
 const PostStatus = ({ currentUser }) => {
-  let userEmail = localStorage.getItem('userEmail')
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [allPosts, setAllPosts] = useState([]);
@@ -17,7 +16,7 @@ const PostStatus = ({ currentUser }) => {
     let object = {
       status: status,
       timeStamp: getCurrentTimeStamp("LLL"),
-      userEmail: userEmail,
+      userEmail: currentUser.email,
       userName: currentUser.name,
       postId: getUniqueId(),
     };

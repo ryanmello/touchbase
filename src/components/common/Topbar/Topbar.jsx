@@ -41,7 +41,7 @@ const Topbar = () => {
       <div className="react-icons">
         <AiOutlineSearch size={25} className="react-icon"/>
         <AiOutlineHome size={25} className="react-icon" onClick={() => goToRoute("/home")}/>
-        <AiOutlineUserSwitch size={25} className="react-icon" onClick={() => goToRoute("/profile")}/>
+        <AiOutlineUserSwitch size={25} className="react-icon" onClick={() => goToRoute("/connections")}/>
         <BsBriefcase size={25} className="react-icon" onClick={() => goToRoute("/jobs")}/>
         <AiOutlineMessage size={25} className="react-icon" onClick={() => goToRoute("/messages")}/>
         <AiOutlineBell size={25} className="react-icon" onClick={() => goToRoute("/notifications")}/>

@@ -37,7 +37,6 @@ export const postUserData = (object) => {
 };
 
 export const getCurrentUser = (setCurrentUser) => {
-  let currentUserEmail = localStorage.getItem("userEmail");
   onSnapshot(userRef, (response) => {
     setCurrentUser(
       response.docs
@@ -45,7 +44,7 @@ export const getCurrentUser = (setCurrentUser) => {
           return { ...docs.data(), userId: docs.id };
         })
         .filter((item) => {
-          return item.email === currentUserEmail;
+          return item.email === localStorage.getItem("userEmail");
         })[0]
     );
   });
