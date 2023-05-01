@@ -1,5 +1,5 @@
 import { firestore } from "../firebaseConfig";
-import { addDoc, collection, onSnapshot } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 let postsRef = collection(firestore, "posts");
@@ -36,6 +36,7 @@ export const postUserData = (object) => {
     });
 };
 
+// get the current user
 export const getCurrentUser = (setCurrentUser) => {
   onSnapshot(userRef, (response) => {
     setCurrentUser(
@@ -49,3 +50,7 @@ export const getCurrentUser = (setCurrentUser) => {
     );
   });
 };
+
+export const editProfile = () => {
+  
+}

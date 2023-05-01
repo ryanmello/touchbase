@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProfileEdit.scss";
 
 const ProfileEdit = ({ onEdit }) => {
+  const [editInputs, setEditInputs] = useState({});
   const getInput = (event) => {
-
+    let { name, value } = event.target;
+    let input = { [name]: value };
+    setEditInputs({ ...editInputs, ...input });
   };
 
   return (
@@ -45,6 +48,10 @@ const ProfileEdit = ({ onEdit }) => {
             name="college"
             onChange={getInput}
           ></input>
+        </div>
+        <div className="input-btns">
+          <button className="save-btn">Save</button>
+          <button className="cancel-btn" onClick={onEdit}>Cancel</button>
         </div>
       </div>
     </div>
