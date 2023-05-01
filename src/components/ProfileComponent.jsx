@@ -1,11 +1,17 @@
 import React from 'react'
-import "../sass/ProfileComponent.scss";
 import ProfileCard from './common/ProfileCard/ProfileCard';
+import { useState } from 'react';
+import ProfileEdit from './common/ProfileEdit/ProfileEdit';
 
 const ProfileComponent = ({ currentUser }) => {
+  const [isEdit, setIsEdit] = useState(false);
+
+  const onEdit = () => {
+    setIsEdit(!isEdit);
+  }
   return (
     <div className='profile-container'>
-        <ProfileCard currentUser={currentUser}/>
+        {isEdit ? <ProfileEdit onEdit={onEdit}/> : <ProfileCard currentUser={currentUser} onEdit={onEdit}/>}
     </div>
   )
 }

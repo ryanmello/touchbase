@@ -1,19 +1,24 @@
-import React from 'react'
-import './ProfileCard.scss'
-import ProfileEdit from '../ProfileEdit/ProfileEdit'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import "./ProfileCard.scss";
+import ProfileEdit from "../ProfileEdit/ProfileEdit";
+import { useNavigate } from "react-router-dom";
 
-const ProfileCard = ({ currentUser }) => {
-    const redirect = useNavigate();
+const ProfileCard = ({ currentUser, onEdit }) => {
+  const redirect = useNavigate();
+
   return (
-    <div className='profile-card-container'>
-        <div className='edit-btn-container'>
-            <button className='edit-btn' onClick={() => redirect("/profile/edit")}>Edit</button>
+    <div className="profile-card">
+      <div className="profile-card-container">
+        <div className="edit-btn-container">
+          <button className="edit-btn" onClick={onEdit}>
+            Edit
+          </button>
         </div>
-        <h3 className='username'>{currentUser.name}</h3>
-        <p className='email'>{currentUser.email}</p>
+        <h3 className="username">{currentUser.name}</h3>
+        <p className="email">{currentUser.email}</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProfileCard
+export default ProfileCard;

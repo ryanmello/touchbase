@@ -1,10 +1,11 @@
 import React from 'react'
 import './ProfileEdit.scss'
 
-const ProfileEdit = () => {
+const ProfileEdit = ({ onEdit }) => {
   return (
     <div>
       Profile Edit
+      <button className='back-btn' onClick={onEdit}>Back</button>
     </div>
   )
 }
