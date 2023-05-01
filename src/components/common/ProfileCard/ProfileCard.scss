@@ -13,21 +13,20 @@
   padding: 20px;
   position: relative;
 
-  .edit-btn-container {
+  .edit-btn {
     position: absolute;
     right: 20px;
-    .edit-btn {
-      padding: 10px 20px 10px 20px;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      background-color: #0073b1;
-      cursor: pointer;
-    }
+    padding: 10px 20px 10px 20px;
+    width: 80px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: #0073b1;
+    cursor: pointer;
+  }
 
-    .edit-btn:hover {
-      background-color: #005b8b;
-    }
+  .edit-btn:hover {
+    background-color: #005b8b;
   }
 
   .username {

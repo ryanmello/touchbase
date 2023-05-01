@@ -12,7 +12,6 @@ body {
 
   .heading {
     font-weight: 500;
-    font-family: system-ui;
     color: rgba(0, 0, 0, 0.9);
     padding-top: 100px;
     display: flex;
@@ -20,7 +19,6 @@ body {
 
   .subheading {
     margin-top: -5px;
-    font-family: system-ui;
     padding-bottom: 20px;
   }
 }
@@ -34,7 +32,6 @@ body {
   .common-input {
     height: 20px;
     padding: 20px;
-    font-family: system-ui;
     border-radius: 30px;
     font-size: 16px;
   }
