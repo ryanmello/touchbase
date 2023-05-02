@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import "./ProfileEdit.scss";
+import { editProfile } from "../../../api/FirestoreAPI";
 
-const ProfileEdit = ({ onEdit }) => {
+const ProfileEdit = ({ onEdit, currentUser }) => {
   const [editInputs, setEditInputs] = useState({});
   const getInput = (event) => {
     let { name, value } = event.target;
     let input = { [name]: value };
     setEditInputs({ ...editInputs, ...input });
   };
+
+  const updateProfileData = () => {
+    editProfile(currentUser.userId, editInputs);
+  } 
 
   return (
     <div className="profile-edit">
@@ -50,7 +55,7 @@ const ProfileEdit = ({ onEdit }) => {
           ></input>
         </div>
         <div className="input-btns">
-          <button className="save-btn">Save</button>
+          <button className="save-btn" onClick={updateProfileData}>Save</button>
           <button className="cancel-btn" onClick={onEdit}>Cancel</button>
         </div>
       </div>

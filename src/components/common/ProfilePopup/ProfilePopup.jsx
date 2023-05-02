@@ -1,5 +1,5 @@
 import React from "react";
-import { onLogout } from "../../../api/AuthApi";
+import { onLogout } from "../../../api/AuthAPI";
 import "./ProfilePopup.scss";
 import { useNavigate } from "react-router-dom";
 

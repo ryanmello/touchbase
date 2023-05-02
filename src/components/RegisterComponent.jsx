@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { LoginAPI, RegisterAPI, GoogleSignInAPI } from "../api/AuthApi";
+import { RegisterAPI } from "../api/AuthAPI.jsx";
 import { postUserData } from "../api/FirestoreAPI";
 import "../sass/RegisterComponent.scss";
 import LinkedInLogo from "../assets/linkedinLogo.png";
