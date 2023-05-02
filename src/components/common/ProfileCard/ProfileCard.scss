@@ -1,12 +1,13 @@
 .profile-card {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-card-container {
   max-width: 80%;
   width: 800px;
-  height: 50vh;
+  height: auto;
   background: white;
   margin: 30px;
   border-radius: 5px;
@@ -29,13 +30,37 @@
     background-color: #005b8b;
   }
 
-  .username {
-    color: black;
-    font-weight: 600;
-    font-size: 24px;
-  }
+  .items-container {
+    display: flex;
+    width: 100%;
 
-  .email {
-    margin-top: -5px;
+    .left-items {
+      width: 70%;
+      .username {
+        color: black;
+        font-weight: 600;
+        font-size: 24px;
+      }
+
+      .about {
+        font-weight: 600;
+      }
+
+      .location {
+        font-weight: 400;
+      }
+    }
+
+    .right-items {
+      width: 30%;
+      margin-top: 35px;
+      .company {
+        font-weight: 400;
+      }
+
+      .college {
+        font-weight: 400;
+      }
+    }
   }
 }

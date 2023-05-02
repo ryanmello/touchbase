@@ -47,9 +47,9 @@ const PostStatus = ({ currentUser }) => {
 
       {allPosts.map((post) => {
         return (
-          <>
+          <div key={post.postId} className="post-card-alignment">
             <PostCard post={post} />
-          </>
+          </div>
         );
       })}
     </div>
