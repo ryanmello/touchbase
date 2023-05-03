@@ -59,6 +59,7 @@ export const getCurrentUser = (setCurrentUser) => {
   });
 };
 
+// get single post with all posts and the post id
 export const getSingleStatus = (setAllStatus, id) => {
   const singlePostQuery = query(postsRef, where("userId", "==", id));
   onSnapshot(singlePostQuery, (response) => {
@@ -70,7 +71,17 @@ export const getSingleStatus = (setAllStatus, id) => {
   });
 };
 
-export const getSingleUser = () => {};
+// get single user
+export const getSingleUser = (setCurrentUser, email) => {
+  const singleUserQuery = query(userRef, where("email", "==", email));
+  onSnapshot(singleUserQuery, (response) => {
+    setCurrentUser(
+      response.docs.map((docs) => {
+        return { ...docs.data(), id: docs.id };
+      })[0]
+    );
+  });
+};
 
 // update the profile document
 export const editProfile = (userId, data) => {

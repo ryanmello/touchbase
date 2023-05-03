@@ -20,7 +20,7 @@ const PostStatus = ({ currentUser }) => {
       userEmail: currentUser.email,
       userName: currentUser.name,
       postId: getUniqueId(),
-      userId: currentUser.userId,
+      userId: currentUserId,
     };
 
     postStatus(object);
