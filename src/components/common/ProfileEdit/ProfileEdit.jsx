@@ -13,7 +13,7 @@ const ProfileEdit = ({ onEdit, currentUser }) => {
   const updateProfileData = () => {
     editProfile(currentUser.userId, editInputs);
     onEdit();
-  } 
+  };
 
   return (
     <div className="profile-edit">
@@ -24,40 +24,54 @@ const ProfileEdit = ({ onEdit, currentUser }) => {
 
         <h2>Edit Profile</h2>
         <div className="profile-edit-inputs">
+          <h4>Name</h4>
           <input
             placeholder="Name"
             className="common-input"
             name="name"
+            value={currentUser.name}
             onChange={getInput}
           ></input>
+          <h4>About</h4>
           <input
             placeholder="About"
             className="common-input"
             name="about"
+            value={currentUser.about}
             onChange={getInput}
           ></input>
+          <h4>Location</h4>
           <input
             placeholder="Location"
             className="common-input"
             name="location"
+            value={currentUser.location}
             onChange={getInput}
           ></input>
+          <h4>Company</h4>
           <input
             placeholder="Company"
             className="common-input"
             name="company"
+            value={currentUser.company}
             onChange={getInput}
           ></input>
+          <h4>College</h4>
           <input
             placeholder="College"
             className="common-input"
             name="college"
+            value={currentUser.college}
             onChange={getInput}
           ></input>
         </div>
         <div className="input-btns">
-          <button className="save-btn" onClick={updateProfileData}>Save</button>
-          <button className="cancel-btn" onClick={onEdit}>Cancel</button>
+          <button className="save-btn" onClick={updateProfileData}>
+            Save
+          </button>
+          <button className="cancel-btn" onClick={onEdit}>
+            Cancel
+          </button>
         </div>
       </div>
     </div>

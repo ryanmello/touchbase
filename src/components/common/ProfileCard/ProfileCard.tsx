@@ -4,9 +4,12 @@ import PostCard from "../PostCard/PostCard";
 import { getStatus, postStatus } from "../../../api/FirestoreAPI";
 import { getUniqueId } from "../../../helpers/getUniqueId";
 import { getCurrentTimeStamp } from "../../../helpers/useMoment";
+import { useLocation } from "react-router-dom"
 
 const ProfileCard = ({ currentUser, onEdit }) => {
+  let location = useLocation();
   const [allPosts, setAllPosts] = useState<any[]>([]);
+  let currentUserId = currentUser.userId;
 
   useMemo(() => {
     getStatus(setAllPosts);
@@ -37,8 +40,8 @@ const ProfileCard = ({ currentUser, onEdit }) => {
           })
           .map((post) => {
             return (
-              <div key={post.postId} className="post-card-alignment">
-                <PostCard post={post} />
+              <div key={post.postId} className="profile-card">
+                <PostCard post={post} id={currentUserId}/>
               </div>
             );
           })}
