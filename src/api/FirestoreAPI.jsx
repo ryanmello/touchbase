@@ -59,7 +59,7 @@ export const getCurrentUser = (setCurrentUser) => {
   });
 };
 
-// get single post with all posts and the post id
+// get all posts with all posts and the post id
 export const getSingleStatus = (setAllStatus, id) => {
   const singlePostQuery = query(postsRef, where("userId", "==", id));
   onSnapshot(singlePostQuery, (response) => {
