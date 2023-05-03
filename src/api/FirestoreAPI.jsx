@@ -5,6 +5,8 @@ import {
   onSnapshot,
   doc,
   updateDoc,
+  query,
+  where,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 
@@ -57,6 +59,20 @@ export const getCurrentUser = (setCurrentUser) => {
   });
 };
 
+export const getSingleStatus = (setAllStatus, id) => {
+  const singlePostQuery = query(postsRef, where("userId", "==", id));
+  onSnapshot(singlePostQuery, (response) => {
+    setAllStatus(
+      response.docs.map((docs) => {
+        return { ...docs.data(), id: docs.id };
+      })
+    );
+  });
+};
+
+export const getSingleUser = () => {};
+
+// update the profile document
 export const editProfile = (userId, data) => {
   let userToEdit = doc(userRef, userId);
   updateDoc(userToEdit, data)

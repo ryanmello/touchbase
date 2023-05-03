@@ -6,6 +6,7 @@ import LinkedInLogo from "../assets/linkedinLogo.png";
 import GoogleButton from "react-google-button";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { getUniqueId } from "../helpers/getUniqueId.jsx";
 
 const RegisterComponent = () => {
   const [credentials, setCredentials] = useState();
@@ -15,7 +16,11 @@ const RegisterComponent = () => {
     try {
       let res = await RegisterAPI(credentials.email, credentials.password);
       localStorage.setItem("userEmail", res.user.email);
-      postUserData({ name: credentials.name, email: credentials.email })
+      postUserData({
+        userId: getUniqueId(),
+        name: credentials.name,
+        email: credentials.email,
+      });
       toast.success("Success");
       redirect("/home");
     } catch (error) {
