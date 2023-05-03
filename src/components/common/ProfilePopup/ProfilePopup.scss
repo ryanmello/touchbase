@@ -1,6 +1,6 @@
 .profile-popup {
   border: 1px solid #a8a8a8;
-  width: 200px;
+  width: 300px;
   height: auto;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
@@ -9,17 +9,25 @@
   flex-direction: column;
   padding: 10px 10px 10px 10px;
 
-  .profile-popup-options {
-    list-style-type: none;
-    
-    .profile-popup-option {
-      cursor: pointer;
-      color: rgb(90, 90, 90);
+  .profile-information{
+    display: flex;
+    padding-bottom: 10px;
+    .profile-information-left{
+      padding-right: 10px;
+      .image{
+        border-radius: 100px;
+        max-width: 50px;
+      }
     }
 
-    .profile-popup-option:hover {
-      cursor: pointer;
-      color: rgb(0, 0, 0);
+    .profile-information-right{
+      .name{
+        font-weight: 600;
+        font-size: 16px;
+      }
+      .about{
+        font-size: 14px;
+      }
     }
   }
 }

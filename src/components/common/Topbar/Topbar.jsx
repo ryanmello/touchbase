@@ -30,7 +30,7 @@ const Topbar = () => {
     <div className="topbar-main">
       {popupVisible? (
         <div className="popup-position">
-          <ProfilePopup />
+          <ProfilePopup/>
         </div>
       ) : (
         <></>

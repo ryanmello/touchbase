@@ -26,42 +26,37 @@ const ProfileEdit = ({ onEdit, currentUser }) => {
         <div className="profile-edit-inputs">
           <h4>Name</h4>
           <input
-            placeholder="Name"
+            placeholder={currentUser.name}
             className="common-input"
             name="name"
-            value={currentUser.name}
             onChange={getInput}
           ></input>
           <h4>About</h4>
           <input
-            placeholder="About"
+            placeholder={currentUser.about}
             className="common-input"
             name="about"
-            value={currentUser.about}
             onChange={getInput}
           ></input>
           <h4>Location</h4>
           <input
-            placeholder="Location"
+            placeholder={currentUser.location}
             className="common-input"
             name="location"
-            value={currentUser.location}
             onChange={getInput}
           ></input>
           <h4>Company</h4>
           <input
-            placeholder="Company"
+            placeholder={currentUser.company}
             className="common-input"
             name="company"
-            value={currentUser.company}
             onChange={getInput}
           ></input>
           <h4>College</h4>
           <input
-            placeholder="College"
+            placeholder={currentUser.college}
             className="common-input"
             name="college"
-            value={currentUser.college}
             onChange={getInput}
           ></input>
         </div>
