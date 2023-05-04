@@ -10,6 +10,7 @@ import {
 import { getUniqueId } from "../../../helpers/getUniqueId";
 import { getCurrentTimeStamp } from "../../../helpers/useMoment";
 import { useLocation } from "react-router-dom";
+import { HiOutlinePencil } from 'react-icons/hi'
 
 const ProfileCard = ({ currentUser, onEdit }) => {
   let location = useLocation();
@@ -29,9 +30,7 @@ const ProfileCard = ({ currentUser, onEdit }) => {
   return (
     <div className="profile-card">
       <div className="profile-card-container">
-        <button className="edit-btn" onClick={onEdit}>
-          Edit
-        </button>
+        <HiOutlinePencil className="edit-btn" size={20} onClick={onEdit}/>
         <div className="items-container">
           <div className="left-items">
             <h3 className="username">

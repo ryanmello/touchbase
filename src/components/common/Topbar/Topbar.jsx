@@ -49,7 +49,6 @@ const Topbar = () => {
         <div className="user-container">
             <img className="user" src={User} alt="" onClick={displayPopup}/>
         </div>
-
       </div>
     </div>
   );

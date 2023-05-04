@@ -18,10 +18,6 @@ const ProfileEdit = ({ onEdit, currentUser }) => {
   return (
     <div className="profile-edit">
       <div className="profile-edit-container">
-        <button className="back-btn" onClick={onEdit}>
-          Back
-        </button>
-
         <h2>Edit Profile</h2>
         <div className="profile-edit-inputs">
           <h4>Name</h4>
