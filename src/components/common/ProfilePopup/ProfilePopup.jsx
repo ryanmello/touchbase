@@ -7,7 +7,7 @@ import { getCurrentUser } from "../../../api/FirestoreAPI";
 import { useMemo, useState } from "react";
 import Profile from "../../../assets/profile.jpg";
 
-const ProfilePopup = () => {
+const ProfilePopup = ({ popupVisible, setPopupVisible }) => {
   const redirect = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
   useMemo(() => {
@@ -29,6 +29,7 @@ const ProfilePopup = () => {
       <Button
         title={"View Profile"}
         onClick={() => {
+          setPopupVisible(!popupVisible);
           redirect("/profile", {
             state: {
               id: currentUser.userId,

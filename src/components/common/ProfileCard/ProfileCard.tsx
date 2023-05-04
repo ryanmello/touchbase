@@ -10,12 +10,14 @@ import {
 import { getUniqueId } from "../../../helpers/getUniqueId";
 import { getCurrentTimeStamp } from "../../../helpers/useMoment";
 import { useLocation } from "react-router-dom";
-import { HiOutlinePencil } from 'react-icons/hi'
+import { HiOutlinePencil } from "react-icons/hi";
+import ProfileEditModal from "../ProfileEditModal/ProfileEditModal";
 
 const ProfileCard = ({ currentUser, onEdit }) => {
   let location = useLocation();
   const [allPosts, setAllPosts] = useState<any[]>([]);
   const [currentProfile, setCurrentProfile] = useState<any>({});
+  const [openEditModal, setOpenEditModal] = useState<any>(false);
 
   useMemo(() => {
     if (location?.state?.id) {
@@ -30,7 +32,17 @@ const ProfileCard = ({ currentUser, onEdit }) => {
   return (
     <div className="profile-card">
       <div className="profile-card-container">
-        <HiOutlinePencil className="edit-btn" size={30} onClick={onEdit}/>
+        <HiOutlinePencil
+          className="edit-btn"
+          size={30}
+          onClick={() => setOpenEditModal(true)}
+        />
+        <ProfileEditModal
+          openEditModal={openEditModal}
+          setOpenEditModal={setOpenEditModal}
+          currentUser={currentUser}
+        />
+
         <div className="items-container">
           <div className="left-items">
             <h3 className="username">
@@ -48,6 +60,11 @@ const ProfileCard = ({ currentUser, onEdit }) => {
                 ? currentUser.location
                 : currentProfile?.location}
             </p>
+            <a className="website" href={currentUser.website}>
+              {Object.values(currentProfile).length === 0
+                ? currentUser.website
+                : currentProfile?.website}
+            </a>
           </div>
           <div className="right-items">
             <p className="company">
