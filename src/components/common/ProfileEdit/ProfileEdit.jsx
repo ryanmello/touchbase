@@ -3,7 +3,7 @@ import "./ProfileEdit.scss";
 import { editProfile } from "../../../api/FirestoreAPI";
 
 const ProfileEdit = ({ onEdit, currentUser }) => {
-  const [editInputs, setEditInputs] = useState({});
+  const [editInputs, setEditInputs] = useState(currentUser);
   const getInput = (event) => {
     let { name, value } = event.target;
     let input = { [name]: value };
@@ -22,39 +22,76 @@ const ProfileEdit = ({ onEdit, currentUser }) => {
         <div className="profile-edit-inputs">
           <h4>Name</h4>
           <input
-            placeholder={currentUser.name}
+            value={editInputs.name}
+            placeholder="Name"
             className="common-input"
             name="name"
             onChange={getInput}
           ></input>
-          <h4>About</h4>
+          <h4>Headline</h4>
           <input
-            placeholder={currentUser.about}
+            value={editInputs.headline}
+            placeholder="Headline"
             className="common-input"
-            name="about"
+            name="headline"
             onChange={getInput}
           ></input>
           <h4>Location</h4>
           <input
-            placeholder={currentUser.location}
+            value={editInputs.location}
+            placeholder="Location"
             className="common-input"
             name="location"
             onChange={getInput}
           ></input>
+          <h4>City</h4>
+          <input
+            value={editInputs.city}
+            placeholder="City"
+            className="common-input"
+            name="city"
+            onChange={getInput}
+          ></input>
           <h4>Company</h4>
           <input
-            placeholder={currentUser.company}
+            value={editInputs.company}
+            placeholder="Company"
             className="common-input"
             name="company"
             onChange={getInput}
           ></input>
+          <h4>Industry</h4>
+          <input
+            value={editInputs.industry}
+            placeholder="Industry"
+            className="common-input"
+            name="industry"
+            onChange={getInput}
+          ></input>
           <h4>College</h4>
           <input
-            placeholder={currentUser.college}
+            value={editInputs.college}
+            placeholder="College"
             className="common-input"
             name="college"
             onChange={getInput}
           ></input>
+          <h4>Website</h4>
+          <input
+            value={editInputs.website}
+            placeholder="Website"
+            className="common-input"
+            name="website"
+            onChange={getInput}
+          ></input>
+          <h4>About</h4>
+          <textarea
+            value={editInputs.about}
+            placeholder="About"
+            className="common-textarea"
+            name="about"
+            onChange={getInput}
+          ></textarea>
         </div>
         <div className="input-btns">
           <button className="save-btn" onClick={updateProfileData}>

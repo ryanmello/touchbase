@@ -30,7 +30,7 @@ const ProfileCard = ({ currentUser, onEdit }) => {
   return (
     <div className="profile-card">
       <div className="profile-card-container">
-        <HiOutlinePencil className="edit-btn" size={20} onClick={onEdit}/>
+        <HiOutlinePencil className="edit-btn" size={30} onClick={onEdit}/>
         <div className="items-container">
           <div className="left-items">
             <h3 className="username">
@@ -38,10 +38,10 @@ const ProfileCard = ({ currentUser, onEdit }) => {
                 ? currentUser.name
                 : currentProfile?.name}
             </h3>
-            <p className="about">
+            <p className="headline">
               {Object.values(currentProfile).length === 0
-                ? currentUser.about
-                : currentProfile?.about}
+                ? currentUser.headline
+                : currentProfile?.headline}
             </p>
             <p className="location">
               {Object.values(currentProfile).length === 0

@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.profile-posts{
+.profile-posts {
   width: 100%;
 }
 
@@ -21,7 +21,14 @@
   .edit-btn {
     position: absolute;
     right: 20px;
+    padding: 5px;
     cursor: pointer;
+  }
+
+  .edit-btn:hover{
+    background-color: whitesmoke;
+    padding: 5px;
+    border-radius: 10px;
   }
 
   .items-container {

@@ -14,8 +14,6 @@ const ProfilePopup = () => {
     getCurrentUser(setCurrentUser);
   }, []);
 
-  console.log(currentUser.name)
-
   return (
     <div className="profile-popup">
       <div className="profile-information">
@@ -24,7 +22,7 @@ const ProfilePopup = () => {
         </div>  
         <div className="profile-information-right">
           <p className="name">{currentUser.name}</p>
-          <p className="about">{currentUser.about}</p>
+          <p className="about">{currentUser.headline}</p>
         </div>
 
       </div>
