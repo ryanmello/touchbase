@@ -7,17 +7,13 @@ import {
   getStatus,
   postStatus,
 } from "../../../api/FirestoreAPI";
-import { getUniqueId } from "../../../helpers/getUniqueId";
-import { getCurrentTimeStamp } from "../../../helpers/useMoment";
 import { useLocation } from "react-router-dom";
 import { HiOutlinePencil } from "react-icons/hi";
-import ProfileEditModal from "../ProfileEditModal/ProfileEditModal";
 
 const ProfileCard = ({ currentUser, onEdit }) => {
   let location = useLocation();
   const [allPosts, setAllPosts] = useState<any[]>([]);
   const [currentProfile, setCurrentProfile] = useState<any>({});
-  const [openEditModal, setOpenEditModal] = useState<any>(false);
 
   useMemo(() => {
     if (location?.state?.id) {
@@ -35,12 +31,7 @@ const ProfileCard = ({ currentUser, onEdit }) => {
         <HiOutlinePencil
           className="edit-btn"
           size={30}
-          onClick={() => setOpenEditModal(true)}
-        />
-        <ProfileEditModal
-          openEditModal={openEditModal}
-          setOpenEditModal={setOpenEditModal}
-          currentUser={currentUser}
+          onClick={onEdit}
         />
 
         <div className="items-container">
@@ -60,7 +51,7 @@ const ProfileCard = ({ currentUser, onEdit }) => {
                 ? currentUser.location
                 : currentProfile?.location}
             </p>
-            <a className="website" href={currentUser.website}>
+            <a className="website" href={currentUser.website} target="_blank">
               {Object.values(currentProfile).length === 0
                 ? currentUser.website
                 : currentProfile?.website}

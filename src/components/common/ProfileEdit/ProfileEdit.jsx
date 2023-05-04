@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./ProfileEdit.scss";
 import { editProfile } from "../../../api/FirestoreAPI";
+import { AiOutlineClose } from "react-icons/ai"
 
 const ProfileEdit = ({ onEdit, currentUser }) => {
   const [editInputs, setEditInputs] = useState(currentUser);
-  
+
   const getInput = (event) => {
     let { name, value } = event.target;
     let input = { [name]: value };
@@ -19,7 +20,11 @@ const ProfileEdit = ({ onEdit, currentUser }) => {
   return (
     <div className="profile-edit">
       <div className="profile-edit-container">
-        <h2>Edit Profile</h2>
+        <div className="heading">
+          <h2>Edit Profile</h2>
+          <AiOutlineClose className="close" size={30} onClick={onEdit}/>
+        </div>
+        
         <div className="profile-edit-inputs">
           <h4>Name</h4>
           <input
