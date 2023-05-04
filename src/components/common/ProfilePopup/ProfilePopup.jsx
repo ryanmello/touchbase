@@ -24,7 +24,6 @@ const ProfilePopup = ({ popupVisible, setPopupVisible }) => {
           <p className="name">{currentUser.name}</p>
           <p className="about">{currentUser.headline}</p>
         </div>
-
       </div>
       <Button
         title={"View Profile"}
