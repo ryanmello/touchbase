@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import "./LikeButton.scss";
 import { AiOutlineLike } from "react-icons/ai";
+import { AiFillLike } from "react-icons/ai";
 import { likePost } from "../../../api/FirestoreAPI";
 import { getLikesByUser } from "../../../api/FirestoreAPI";
 
@@ -19,9 +20,8 @@ const LikeButton = ({ userId, postId }) => {
 
   return (
     <div className="like-container" onClick={handleLike}>
-      <AiOutlineLike size={20} />
-      <p>Like</p>
-      {likesCount}
+      {liked? <AiFillLike size={20} color="0079bb"/> : <AiOutlineLike size={20} />}
+      <p className={liked ? 'blue' : 'black'}>{liked ? "Liked" : "Like"}</p>
     </div>
   );
 };

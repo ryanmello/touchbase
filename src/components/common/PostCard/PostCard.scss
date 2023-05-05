@@ -28,7 +28,16 @@
 
         .actions{
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+
+            p{
+                font-size: 14px;
+            }
+
+            .like-comment{
+                display: flex;
+                gap: 20px;
+            }
         }
     }
 }
