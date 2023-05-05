@@ -8,6 +8,7 @@ import {
   updateDoc,
   query,
   where,
+  deleteDoc,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 
@@ -97,11 +98,34 @@ export const editProfile = (userId, data) => {
     });
 };
 
-export const likePost = (userId, postId) => {
+// save the corresponding userId and postId to a liked post
+export const likePost = (userId, postId, liked) => {
   try {
     let docToLike = doc(likesRef, `${userId}_${postId}`);
-    setDoc(docToLike, { userId, postId });
+
+    if(liked){
+      deleteDoc(docToLike);
+    } else {
+      setDoc(docToLike, { userId, postId });
+    }
   } catch (error) {
     console.log(error);
   }
 };
+
+export const getLikesByUser = (userId, postId, setLiked, setLikesCount) => {
+  try{
+    let likeQuery = query(likesRef, where('postId', '==', postId));
+
+    onSnapshot(likeQuery, (response) => {
+      let likes = response.docs.map((doc) => (doc.data()))
+      let likesCount = likes.length;
+      const isLiked = likes.some((like) => like.userId === userId)
+
+      setLikesCount(likesCount);
+      setLiked(isLiked);
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
