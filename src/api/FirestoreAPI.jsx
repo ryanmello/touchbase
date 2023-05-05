@@ -4,6 +4,7 @@ import {
   collection,
   onSnapshot,
   doc,
+  setDoc,
   updateDoc,
   query,
   where,
@@ -12,6 +13,7 @@ import { toast } from "react-toastify";
 
 let postsRef = collection(firestore, "posts");
 let userRef = collection(firestore, "users");
+let likesRef = collection(firestore, "likes");
 
 // creating a post
 export const postStatus = (object) => {
@@ -93,4 +95,13 @@ export const editProfile = (userId, data) => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+export const likePost = (userId, postId) => {
+  try {
+    let docToLike = doc(likesRef, `${userId}_${postId}`);
+    setDoc(docToLike, { userId, postId });
+  } catch (error) {
+    console.log(error);
+  }
 };
