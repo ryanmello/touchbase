@@ -25,7 +25,7 @@ const PostStatus = ({ currentUser }) => {
 
     postStatus(object);
     setModalOpen(false);
-    setStatus("");
+    () => setStatus("");
   };
 
   useMemo(() => {

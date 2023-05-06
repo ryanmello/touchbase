@@ -38,7 +38,7 @@ const PostCard = ({ post, id }) => {
           </p>
           <div className="like-comment">
             <LikeButton userId={id} postId={post.id} />
-            <CommentButton isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} post={post}/>
+            <CommentButton isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} post={post} currentUserId={id}/>
           </div>
         </div>
       </div>
