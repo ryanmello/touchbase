@@ -12,8 +12,8 @@ import { HiOutlinePencil } from "react-icons/hi";
 
 const ProfileCard = ({ currentUser, onEdit }) => {
   let location = useLocation();
-  const [allPosts, setAllPosts] = useState<any[]>([]);
-  const [currentProfile, setCurrentProfile] = useState<any>({});
+  const [allPosts, setAllPosts] = useState([]);
+  const [currentProfile, setCurrentProfile] = useState({});
 
   useMemo(() => {
     if (location?.state?.id) {

@@ -62,7 +62,7 @@ export const getCurrentUser = (setCurrentUser) => {
   });
 };
 
-// get all posts with all posts and the post id
+// get all posts from a user with all posts and the post id
 export const getSingleStatus = (setAllStatus, id) => {
   const singlePostQuery = query(postsRef, where("userId", "==", id));
   onSnapshot(singlePostQuery, (response) => {
@@ -115,11 +115,15 @@ export const likePost = (userId, postId, liked) => {
 
 export const getLikesByUser = (userId, postId, setLiked, setLikesCount) => {
   try{
+    // contains all documents with corresponding postId
     let likeQuery = query(likesRef, where('postId', '==', postId));
 
     onSnapshot(likeQuery, (response) => {
+      // likes is all the data from the documents with the postId as objects
       let likes = response.docs.map((doc) => (doc.data()))
+      // get the length of the data
       let likesCount = likes.length;
+      // returns true if one of the documents in likes contains userId
       const isLiked = likes.some((like) => like.userId === userId)
 
       setLikesCount(likesCount);
