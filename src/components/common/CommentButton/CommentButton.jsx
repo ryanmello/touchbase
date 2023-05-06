@@ -4,15 +4,18 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { Button, Modal } from "antd";
 import { commentPost } from "../../../api/FirestoreAPI";
 import { useState } from "react";
+import { getCurrentTimeStamp } from "../../../helpers/useMoment";
 
-const CommentButton = ({ isModalOpen, setIsModalOpen, post, currentUserId }) => {
+const CommentButton = ({ isModalOpen, setIsModalOpen, post, currentUser }) => {
   const [comment, setComment] = useState("");
 
   const handleComment = () => {
     let object = {
-      usedId: currentUserId,
+      userId: currentUser.userId,
       postId: post.id,
       comment: comment,
+      name: currentUser.name,
+      timeStamp: getCurrentTimeStamp('LLL'),
     };
 
     commentPost(object);

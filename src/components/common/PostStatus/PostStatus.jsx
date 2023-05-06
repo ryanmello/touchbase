@@ -50,7 +50,7 @@ const PostStatus = ({ currentUser }) => {
       {allPosts.map((post) => {
         return (
           <div key={post.postId} className="post-card-alignment">
-            <PostCard post={post} id={currentUserId}/>
+            <PostCard post={post} currentUser={currentUser} id={currentUserId}/>
           </div>
         );
       })}

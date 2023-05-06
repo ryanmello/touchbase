@@ -60,5 +60,17 @@
             background-color: white;
             cursor: pointer;
         }
+
+        .comment-content{
+            display: flex;
+            gap: 4px;
+
+            .comment-content-name{
+                background-color: #0079bb;
+                color: white;
+                padding: 0 4px;
+                border-radius: 4px;
+            }
+        }
     }
 }

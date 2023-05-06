@@ -7,7 +7,7 @@ import { getLikesByUser } from "../../../api/FirestoreAPI";
 import Modal from "antd/es/modal/Modal";
 import { getComments } from "../../../api/FirestoreAPI";
 
-const PostCard = ({ post, id }) => {
+const PostCard = ({ post, currentUser, id }) => {
   let redirect = useNavigate();
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
@@ -45,6 +45,7 @@ const PostCard = ({ post, id }) => {
               isModalOpen={isModalOpen}
               setIsModalOpen={setIsModalOpen}
               post={post}
+              currentUser={currentUser}
               currentUserId={id}
             />
           </div>
@@ -54,7 +55,8 @@ const PostCard = ({ post, id }) => {
         <div className="recent-comment">
           {allComments.length > 0 ? allComments.map((comment) => {
             return (
-              <div> 
+              <div className="comment-content" key={comment.id}> 
+                <p className="comment-content-name">{comment.name}</p>
                 <p>{comment.comment}</p>
               </div>
             )
