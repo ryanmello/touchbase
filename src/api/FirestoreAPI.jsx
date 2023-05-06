@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 let postsRef = collection(firestore, "posts");
 let userRef = collection(firestore, "users");
 let likesRef = collection(firestore, "likes");
+let commentsRef = collection(firestore, "comments");
 
 // creating a post
 export const postStatus = (object) => {
@@ -103,7 +104,7 @@ export const likePost = (userId, postId, liked) => {
   try {
     let docToLike = doc(likesRef, `${userId}_${postId}`);
 
-    if(liked){
+    if (liked) {
       deleteDoc(docToLike);
     } else {
       setDoc(docToLike, { userId, postId });
@@ -114,22 +115,33 @@ export const likePost = (userId, postId, liked) => {
 };
 
 export const getLikesByUser = (userId, postId, setLiked, setLikesCount) => {
-  try{
+  try {
     // contains all documents with corresponding postId
-    let likeQuery = query(likesRef, where('postId', '==', postId));
+    let likeQuery = query(likesRef, where("postId", "==", postId));
 
     onSnapshot(likeQuery, (response) => {
       // likes is all the data from the documents with the postId as objects
-      let likes = response.docs.map((doc) => (doc.data()))
+      let likes = response.docs.map((doc) => doc.data());
       // get the length of the data
       let likesCount = likes.length;
       // returns true if one of the documents in likes contains userId
-      const isLiked = likes.some((like) => like.userId === userId)
+      const isLiked = likes.some((like) => like.userId === userId);
 
       setLikesCount(likesCount);
       setLiked(isLiked);
-    })
+    });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
+
+// add comment
+export const commentPost = (object) => {
+  addDoc(commentsRef, object)
+    .then((res) => {
+      toast.success("Comment Added!");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
