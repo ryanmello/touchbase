@@ -42,4 +42,23 @@
             }
         }
     }
+
+    .comments-container{
+        font-size: 14px;
+        margin-top: 10px;
+        background-color: white;
+        padding: 10px 20px 10px 20px;
+        border-radius: 10px;
+        color: black;
+
+        .comments-button{
+            font-family: Inter;
+            font-weight: 600;
+            color: #0079bb;
+            font-size: 12px;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+        }
+    }
 }

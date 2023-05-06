@@ -5,15 +5,18 @@ import LikeButton from "../LikeButton/LikeButton";
 import CommentButton from "../CommentButton/CommentButton";
 import { getLikesByUser } from "../../../api/FirestoreAPI";
 import Modal from "antd/es/modal/Modal";
+import { getComments } from "../../../api/FirestoreAPI";
 
 const PostCard = ({ post, id }) => {
   let redirect = useNavigate();
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [allComments, setAllComments] = useState([]);
 
   useMemo(() => {
     getLikesByUser(post.userId, post.id, setLiked, setLikesCount);
+    getComments(setAllComments, post.id)
   }, [post.userId, post.id]);
 
   return (
@@ -38,9 +41,26 @@ const PostCard = ({ post, id }) => {
           </p>
           <div className="like-comment">
             <LikeButton userId={id} postId={post.id} />
-            <CommentButton isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} post={post} currentUserId={id}/>
+            <CommentButton
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+              post={post}
+              currentUserId={id}
+            />
           </div>
         </div>
+      </div>
+      <div className="comments-container">
+        <div className="recent-comment">
+          {allComments.length > 0 ? allComments.map((comment) => {
+            return (
+              <div> 
+                <p>{comment.comment}</p>
+              </div>
+            )
+          }) : <></>}
+        </div>
+        <button className="comments-button">View More</button>
       </div>
     </div>
   );

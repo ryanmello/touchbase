@@ -139,9 +139,23 @@ export const getLikesByUser = (userId, postId, setLiked, setLikesCount) => {
 export const commentPost = (object) => {
   addDoc(commentsRef, object)
     .then((res) => {
-      toast.success("Comment Added!");
+      toast.success("Success!");
     })
     .catch((error) => {
       console.log(error);
     });
+};
+
+// get all comments for each post from the database
+export const getComments = (setAllComments, postId) => {
+  const commentQuery = query(commentsRef, where("postId", "==", postId));
+  onSnapshot(commentQuery, (response) => {
+    const comments = response.docs.map((doc) => {
+      return {
+        id: doc.id,
+        ...doc.data(),
+      }
+    })
+    setAllComments(comments)
+  });
 };
