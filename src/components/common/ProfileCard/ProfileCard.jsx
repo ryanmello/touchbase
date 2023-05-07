@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./ProfileCard.scss";
 import PostCard from "../PostCard/PostCard";
 import {
@@ -10,20 +10,21 @@ import {
 import { useLocation } from "react-router-dom";
 import { HiOutlinePencil } from "react-icons/hi";
 import { uploadImage as uploadImageAPI } from "../../../api/ImageUpload";
+import { editProfile } from "../../../api/FirestoreAPI";
 
 const ProfileCard = ({ currentUser, onEdit }) => {
   let location = useLocation();
   const [allPosts, setAllPosts] = useState([]);
   const [currentProfile, setCurrentProfile] = useState({});
   const [currentImage, setCurrentImage] = useState({});
-  
+
   const getImage = (event) => {
-    setCurrentImage(event.target.files[0])
-  }
+    setCurrentImage(event.target.files[0]);
+  };
 
   const uploadImage = () => {
-    uploadImageAPI(currentImage)
-  }
+    uploadImageAPI(currentImage, currentUser.userId);
+  };
 
   useMemo(() => {
     if (location?.state?.id) {
@@ -38,15 +39,10 @@ const ProfileCard = ({ currentUser, onEdit }) => {
   return (
     <div className="profile-card">
       <div className="profile-card-container">
-
-        <input type="file" onChange={getImage}/>
+        <input type="file" onChange={getImage} />
         <button onClick={uploadImage}>Upload</button>
-        
-        <HiOutlinePencil
-          className="edit-btn"
-          size={30}
-          onClick={onEdit}
-        />
+
+        <HiOutlinePencil className="edit-btn" size={30} onClick={onEdit} />
 
         <div className="items-container">
           <div className="left-items">
