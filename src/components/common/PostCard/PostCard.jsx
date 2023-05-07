@@ -57,9 +57,8 @@ const PostCard = ({ post, currentUser, id }) => {
             return (
               <div className="comment-content" key={comment.id}> 
                 <p className="comment-content-name">{comment.name}</p>
-                <p className="comment-content-comment">{comment.comment} •</p>
-                <p className="comment-content-timestamp">{comment.timeStamp}</p>
-
+                <p className="comment-content-comment">{comment.comment}</p>
+                <p className="comment-content-timestamp">• {comment.timeStamp}</p>
               </div>
             )
           }) : <></>}
