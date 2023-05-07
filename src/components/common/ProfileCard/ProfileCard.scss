@@ -37,6 +37,16 @@
 
     .left-items {
       width: 70%;
+
+      .image{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 2px solid rgb(170, 170, 170);
+        padding: 4px;
+        cursor: pointer;
+      }
+
       .username {
         color: black;
         font-weight: 600;
@@ -58,7 +68,7 @@
 
     .right-items {
       width: 30%;
-      margin-top: 35px;
+      margin-top: 192px;
       .company {
         font-weight: 400;
       }

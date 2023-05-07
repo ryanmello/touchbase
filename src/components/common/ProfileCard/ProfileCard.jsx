@@ -10,42 +10,47 @@ import {
 import { useLocation } from "react-router-dom";
 import { HiOutlinePencil } from "react-icons/hi";
 import { uploadImage as uploadImageAPI } from "../../../api/ImageUpload";
-import { editProfile } from "../../../api/FirestoreAPI";
+import FileUploadModal from "../FileUploadModal/FileUploadModal";
 
 const ProfileCard = ({ currentUser, onEdit }) => {
   let location = useLocation();
   const [allPosts, setAllPosts] = useState([]);
   const [currentProfile, setCurrentProfile] = useState({});
-  const [currentImage, setCurrentImage] = useState({});
+  const [showFileUploadModal, setShowFileUploadModal] = useState(false);
 
-  const getImage = (event) => {
-    setCurrentImage(event.target.files[0]);
-  };
-
-  const uploadImage = () => {
-    uploadImageAPI(currentImage, currentUser.userId);
-  };
-
+  /* if there exists an id state and an email state, get the current
+   * user, set the current profile, set all the posts for current user */
   useMemo(() => {
-    if (location?.state?.id) {
-      getSingleStatus(setAllPosts, location?.state?.id);
-    }
-
     if (location?.state?.email) {
       getSingleUser(setCurrentProfile, location?.state?.email);
+    }
+
+    if (location?.state?.id) {
+      getSingleStatus(setAllPosts, location?.state?.id);
     }
   }, []);
 
   return (
     <div className="profile-card">
       <div className="profile-card-container">
-        <input type="file" onChange={getImage} />
-        <button onClick={uploadImage}>Upload</button>
-
+        {showFileUploadModal ? (
+          <FileUploadModal
+            currentUser={currentUser}
+            showFileUploadModal={showFileUploadModal}
+            setShowFileUploadModal={setShowFileUploadModal}
+          />
+        ) : (
+          <></>
+        )}
         <HiOutlinePencil className="edit-btn" size={30} onClick={onEdit} />
 
         <div className="items-container">
           <div className="left-items">
+            <img
+              className="image"
+              src={currentUser.imageLink}
+              onClick={() => setShowFileUploadModal(!showFileUploadModal)}
+            ></img>
             <h3 className="username">
               {Object.values(currentProfile).length === 0
                 ? currentUser.name
