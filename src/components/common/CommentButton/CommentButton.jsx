@@ -30,6 +30,7 @@ const CommentButton = ({ isModalOpen, setIsModalOpen, post, currentUser }) => {
         <p>Comment</p>
       </div>
       <Modal
+        centered
         title={post.userName}
         open={isModalOpen}
         onCancel={() => setIsModalOpen(false)}

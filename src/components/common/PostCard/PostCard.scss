@@ -61,16 +61,27 @@
             cursor: pointer;
         }
 
-        .comment-content{
-            display: flex;
-            gap: 4px;
+        .recent-comment{
+            .comment-content{
+                display: flex;
+                align-items: center;
+                margin-bottom: 4px;
+                gap: 4px;
+    
+                .comment-content-name{
+                    background-color: #0079bb;
+                    color: white;
+                    padding: 0 4px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
 
-            .comment-content-name{
-                background-color: #0079bb;
-                color: white;
-                padding: 0 4px;
-                border-radius: 4px;
+                .comment-content-timestamp{
+                    font-size: 12px;
+                    color: #8a8a8a;
+                }
             }
         }
+
     }
 }
