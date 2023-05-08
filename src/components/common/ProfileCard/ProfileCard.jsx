@@ -11,9 +11,11 @@ import { useLocation } from "react-router-dom";
 import { HiOutlinePencil } from "react-icons/hi";
 import { uploadImage as uploadImageAPI } from "../../../api/ImageUpload";
 import FileUploadModal from "../FileUploadModal/FileUploadModal";
+import Loader from "../Loader/Loader";
 
 const ProfileCard = ({ currentUser, onEdit }) => {
   let location = useLocation();
+  const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState([]);
   const [currentProfile, setCurrentProfile] = useState({});
   const [showFileUploadModal, setShowFileUploadModal] = useState(false);
@@ -33,56 +35,58 @@ const ProfileCard = ({ currentUser, onEdit }) => {
   return (
     <div className="profile-card">
       <div className="profile-card-container">
-        {showFileUploadModal ? (
-          <FileUploadModal
-            currentUser={currentUser}
-            showFileUploadModal={showFileUploadModal}
-            setShowFileUploadModal={setShowFileUploadModal}
-          />
-        ) : (
-          <></>
-        )}
-        <HiOutlinePencil className="edit-btn" size={30} onClick={onEdit} />
-
         <div className="items-container">
-          <div className="left-items">
-            <img
-              className="image"
-              src={currentUser.imageLink}
-              onClick={() => setShowFileUploadModal(!showFileUploadModal)}
-            ></img>
-            <h3 className="username">
-              {Object.values(currentProfile).length === 0
-                ? currentUser.name
-                : currentProfile?.name}
-            </h3>
-            <p className="headline">
-              {Object.values(currentProfile).length === 0
-                ? currentUser.headline
-                : currentProfile?.headline}
-            </p>
-            <p className="location">
-              {Object.values(currentProfile).length === 0
-                ? currentUser.location
-                : currentProfile?.location}
-            </p>
-            <a className="website" href={currentUser.website} target="_blank">
-              {Object.values(currentProfile).length === 0
-                ? currentUser.website
-                : currentProfile?.website}
-            </a>
-          </div>
-          <div className="right-items">
-            <p className="company">
-              {Object.values(currentProfile).length === 0
-                ? currentUser.company
-                : currentProfile?.company}
-            </p>
-            <p className="college">
-              {Object.values(currentProfile).length === 0
-                ? currentUser.college
-                : currentProfile?.college}
-            </p>
+          {showFileUploadModal ? (
+            <FileUploadModal
+              currentUser={currentUser}
+              showFileUploadModal={showFileUploadModal}
+              setShowFileUploadModal={setShowFileUploadModal}
+            />
+          ) : (
+            <></>
+          )}
+          <HiOutlinePencil className="edit-btn" size={30} onClick={onEdit} />
+          <div className="items-container">
+            <div className="left-items">
+              <img
+                className="image"
+                src={currentUser.imageLink}
+                onClick={() => setShowFileUploadModal(!showFileUploadModal)}
+                onLoad={() => setLoading(false)}
+              ></img>
+              <h3 className="username">
+                {Object.values(currentProfile).length === 0
+                  ? currentUser.name
+                  : currentProfile?.name}
+              </h3>
+              <p className="headline">
+                {Object.values(currentProfile).length === 0
+                  ? currentUser.headline
+                  : currentProfile?.headline}
+              </p>
+              <p className="location">
+                {Object.values(currentProfile).length === 0
+                  ? currentUser.location
+                  : currentProfile?.location}
+              </p>
+              <a className="website" href={currentUser.website} target="_blank">
+                {Object.values(currentProfile).length === 0
+                  ? currentUser.website
+                  : currentProfile?.website}
+              </a>
+            </div>
+            <div className="right-items">
+              <p className="company">
+                {Object.values(currentProfile).length === 0
+                  ? currentUser.company
+                  : currentProfile?.company}
+              </p>
+              <p className="college">
+                {Object.values(currentProfile).length === 0
+                  ? currentUser.college
+                  : currentProfile?.college}
+              </p>
+            </div>
           </div>
         </div>
       </div>

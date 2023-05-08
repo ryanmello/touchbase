@@ -17,7 +17,7 @@ const FileUploadModal = ({
 
   const uploadImage = () => {
     uploadImageAPI(currentImage, currentUser.userId);
-    setShowFileUploadModal(false)
+    setShowFileUploadModal(false);
   };
 
   return (
@@ -30,12 +30,14 @@ const FileUploadModal = ({
           <Button key="back" onClick={() => setShowFileUploadModal(false)}>
             Cancel
           </Button>,
-          <Button key="submit" type="primary" onClick={uploadImage}>Save</Button>,
+          <Button key="submit" type="primary" onClick={uploadImage}>
+            Save
+          </Button>,
         ]}
       >
-        <input type="file" onChange={getImage}></input>
+        <input className="file-input" type="file" onChange={getImage}></input>
         <div className="container">
-          <img className="current-user-image" src={currentUser.imageLink}></img>
+          <img className="current-user-image" src={currentUser.imageLink} />
         </div>
       </Modal>
     </div>
