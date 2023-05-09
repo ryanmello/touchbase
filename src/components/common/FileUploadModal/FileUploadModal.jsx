@@ -35,7 +35,10 @@ const FileUploadModal = ({
           </Button>,
         ]}
       >
-        <input className="file-input" type="file" onChange={getImage}></input>
+        <div className="image-upload-container"> 
+          <label for="image-upload" className="upload-button">Add An Image</label>
+          <input hidden id="image-upload" className="file-input" type="file" onChange={getImage}></input>
+        </div>
         <div className="container">
           <img className="current-user-image" src={currentUser.imageLink} />
         </div>

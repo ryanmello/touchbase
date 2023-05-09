@@ -5,9 +5,23 @@
     justify-content: center;
     
     .current-user-image{
+        border-radius: 20px;
         width: 80%;
     }
+}
 
+.image-upload-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+
+    .upload-button{
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+    }
 }
 
 .file-input{
