@@ -30,7 +30,7 @@ const FileUploadModal = ({
           <Button key="back" onClick={() => setShowFileUploadModal(false)}>
             Cancel
           </Button>,
-          <Button key="submit" type="primary" onClick={uploadImage}>
+          <Button disabled={currentImage.name == null ? true : false} key="submit" type="primary" onClick={uploadImage}>
             Save
           </Button>,
         ]}
@@ -38,6 +38,7 @@ const FileUploadModal = ({
         <div className="image-upload-container"> 
           <label for="image-upload" className="upload-button">Add An Image</label>
           <input hidden id="image-upload" className="file-input" type="file" onChange={getImage}></input>
+          <p>{currentImage.name}</p>
         </div>
         <div className="container">
           <img className="current-user-image" src={currentUser.imageLink} />
