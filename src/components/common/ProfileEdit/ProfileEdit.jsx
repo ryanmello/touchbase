@@ -49,14 +49,6 @@ const ProfileEdit = ({ onEdit, currentUser }) => {
             name="location"
             onChange={getInput}
           ></input>
-          <h4>City</h4>
-          <input
-            value={editInputs.city}
-            placeholder="City"
-            className="common-input"
-            name="city"
-            onChange={getInput}
-          ></input>
           <h4>Company</h4>
           <input
             value={editInputs.company}

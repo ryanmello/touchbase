@@ -16,6 +16,7 @@ const CommentButton = ({ isModalOpen, setIsModalOpen, post, currentUser }) => {
       comment: comment,
       name: currentUser.name,
       timeStamp: getCurrentTimeStamp('LLL'),
+      imageLink: currentUser.imageLink,
     };
 
     commentPost(object);

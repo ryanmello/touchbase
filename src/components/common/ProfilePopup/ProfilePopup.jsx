@@ -18,7 +18,7 @@ const ProfilePopup = ({ popupVisible, setPopupVisible }) => {
     <div className="profile-popup">
       <div className="profile-information">
         <div className="profile-information-left">
-          <img className="image" src={Profile}></img>
+          <img className="image" src={currentUser.imageLink}></img>
         </div>  
         <div className="profile-information-right">
           <p className="name">{currentUser.name}</p>

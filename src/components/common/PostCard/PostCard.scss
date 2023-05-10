@@ -1,87 +1,120 @@
-.post-card-container{
-    max-width: 80%;
-    width: 800px;
+.post-card-container {
+  max-width: 80%;
+  width: 800px;
 
-    .post-card{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        height: auto;
-        background-color: white;
-        margin-top: 10px;
-        padding: 20px;
-        border-radius: 10px;
-        
-        .post-card-username{
-            font-size: 16px;
-            text-decoration: underline;
-            cursor: pointer;
+  .post-card {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 10px;
+
+    .post-card-image-container{
+        padding-top: 4px;
+        margin-right: 10px;
+        .post-card-image{
+            width: 40px;
+            background-color: whitesmoke;
+            border-radius: 50%;
         }
+    }
 
-        .post-card-timestamp{
-            font-size: 14px;
-        }
 
-        .post-card-status{
-            font-size: 14px;
-        }
-
-        .actions{
+    .post-content-container{
+        .name-timestamp {
             display: flex;
-            flex-direction: column;
-
-            p{
-                font-size: 14px;
-                color: #757575;
-            }
-
-            .like-comment{
-                display: flex;
-                color: #757575;
-                gap: 20px;
-            }
+            align-items: center;
         }
-    }
-
-    .comments-container{
-        font-size: 14px;
-        margin-top: 10px;
-        background-color: white;
-        padding: 10px 20px 10px 20px;
-        border-radius: 10px;
-        color: black;
-
-        .comments-button{
-            font-family: Inter;
-            font-weight: 600;
-            color: #0079bb;
-            font-size: 12px;
-            border: none;
-            background-color: white;
-            cursor: pointer;
-        }
-
-        .recent-comment{
-            .comment-content{
-                display: flex;
-                align-items: center;
-                margin-bottom: 4px;
-                gap: 4px;
     
-                .comment-content-name{
-                    background-color: #0079bb;
-                    color: white;
-                    padding: 0 4px;
-                    border-radius: 4px;
-                    cursor: pointer;
-                }
-
-                .comment-content-timestamp{
-                    font-size: 12px;
-                    color: #8a8a8a;
-                }
-            }
+        .post-card-username {
+          font-size: 16px;
+          font-weight: 600;
+          padding-right: 4px;
+          cursor: pointer;
         }
-
+    
+        .post-card-timestamp {
+            font-size: 12px;
+            color: #8a8a8a;
+        }
+    
+        .post-card-status {
+          font-size: 14px;
+        }
+    
+        .actions {
+          display: flex;
+          flex-direction: column;
+    
+          p {
+            font-size: 14px;
+            color: #757575;
+          }
+    
+          .like-comment {
+            display: flex;
+            color: #757575;
+            gap: 20px;
+          }
+        }
     }
+
+  }
+
+  .comments-container {
+    font-size: 14px;
+    margin-top: 10px;
+    background-color: white;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    color: black;
+
+    .comments-button {
+      font-family: Inter;
+      font-weight: 600;
+      color: #0079bb;
+      font-size: 12px;
+      border: none;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .recent-comment {
+      .comment-content {
+        margin-bottom: 4px;
+        gap: 4px;
+
+        .comment-heading {
+          display: flex;
+          align-items: flex-start;
+
+          .profile-card-image {
+            padding-top: 4px;
+            margin-right: 10px;
+            width: 40px;
+            background-color: whitesmoke;
+            border-radius: 50%;
+          }
+
+          .name-timestamp {
+            display: flex;
+            align-items: center;
+
+            .comment-content-name {
+              font-weight: 600;
+              border-radius: 4px;
+              padding-right: 4px;
+              cursor: pointer;
+            }
+
+            .comment-content-timestamp {
+              font-size: 12px;
+              color: #8a8a8a;
+            }
+          }
+        }
+      }
+    }
+  }
 }

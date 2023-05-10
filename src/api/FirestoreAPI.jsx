@@ -39,6 +39,28 @@ export const getStatus = (setAllPosts) => {
   });
 };
 
+export const getAllUsers = (setAllUsers) => {
+  onSnapshot(userRef, (response) => {
+    setAllUsers(
+      response.docs.map((docs) => {
+        return { ...docs.data(), id: docs.id };
+      })
+    );
+  });
+} 
+
+// get all posts from a user with all posts and the post id
+export const getSingleStatus = (setAllStatus, id) => {
+  const singlePostQuery = query(postsRef, where("userId", "==", id));
+  onSnapshot(singlePostQuery, (response) => {
+    setAllStatus(
+      response.docs.map((docs) => {
+        return { ...docs.data(), id: docs.id };
+      })
+    );
+  });
+};
+
 // save user to firestore
 export const postUserData = (object) => {
   addDoc(userRef, object)
@@ -63,17 +85,6 @@ export const getCurrentUser = (setCurrentUser) => {
   });
 };
 
-// get all posts from a user with all posts and the post id
-export const getSingleStatus = (setAllStatus, id) => {
-  const singlePostQuery = query(postsRef, where("userId", "==", id));
-  onSnapshot(singlePostQuery, (response) => {
-    setAllStatus(
-      response.docs.map((docs) => {
-        return { ...docs.data(), id: docs.id };
-      })
-    );
-  });
-};
 
 // get single user
 export const getSingleUser = (setCurrentUser, email) => {

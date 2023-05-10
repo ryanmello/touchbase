@@ -22,6 +22,7 @@ export const uploadImage = (file, id, setShowFileUploadModal, setProgress) => {
       getDownloadURL(uploadTask.snapshot.ref).then((response) => {
         editProfile(id, { imageLink: response });
         setShowFileUploadModal(false);
+        setProgress(0);
       });
     }
   );
