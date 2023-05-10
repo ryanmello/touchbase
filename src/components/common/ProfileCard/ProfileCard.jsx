@@ -15,10 +15,10 @@ import Loader from "../Loader/Loader";
 
 const ProfileCard = ({ currentUser, onEdit }) => {
   let location = useLocation();
-  const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState([]);
   const [currentProfile, setCurrentProfile] = useState({});
   const [showFileUploadModal, setShowFileUploadModal] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   /* if there exists an id state and an email state, get the current
    * user, set the current profile, set all the posts for current user */
@@ -41,6 +41,8 @@ const ProfileCard = ({ currentUser, onEdit }) => {
               currentUser={currentUser}
               showFileUploadModal={showFileUploadModal}
               setShowFileUploadModal={setShowFileUploadModal}
+              setProgress={setProgress}
+              progress={progress}
             />
           ) : (
             <></>
@@ -52,7 +54,6 @@ const ProfileCard = ({ currentUser, onEdit }) => {
                 className="image"
                 src={currentUser.imageLink}
                 onClick={() => setShowFileUploadModal(!showFileUploadModal)}
-                onLoad={() => setLoading(false)}
               ></img>
               <h3 className="username">
                 {Object.values(currentProfile).length === 0
