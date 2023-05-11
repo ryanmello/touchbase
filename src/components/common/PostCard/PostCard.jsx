@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import LikeButton from "../LikeButton/LikeButton";
 import CommentButton from "../CommentButton/CommentButton";
 import { getLikesByUser, getAllUsers } from "../../../api/FirestoreAPI";
-import Modal from "antd/es/modal/Modal";
 import { getComments } from "../../../api/FirestoreAPI";
+import { BsPencil, BsTrash} from 'react-icons/bs'
 
 const PostCard = ({ post, currentUser, id }) => {
   let redirect = useNavigate();
@@ -30,6 +30,10 @@ const PostCard = ({ post, currentUser, id }) => {
   return (
     <div className="post-card-container">
       <div className="post-card" key={id}>
+          <div className="action-container">
+            <BsPencil className="action-icon"></BsPencil>
+            <BsTrash className="action-icon"></BsTrash>
+          </div>
         <div className="post-card-image-container">
           <img
             className="post-card-image"

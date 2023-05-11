@@ -9,62 +9,73 @@
     margin-top: 10px;
     padding: 20px;
     border-radius: 10px;
+    position: relative;
 
-    .post-card-image-container{
-        padding-top: 4px;
+    .action-container{
+      position: absolute;
+      right: 20px;
+      display: flex;
+      margin-top: 4px;
 
-        .post-card-image{
-          margin-right: 10px;
-          width: 40px;
-          height: 40px;
-          width: 40px;
-          border-radius: 50%;
-          border: 1px solid rgb(170, 170, 170);
-          object-fit: cover;
-          cursor: pointer;
-        }
+      .action-icon{
+        cursor: pointer;
+        margin-right: 10px;
+      }
     }
 
+    .post-card-image-container {
+      padding-top: 4px;
 
-    .post-content-container{
-        .name-timestamp {
-            display: flex;
-            align-items: center;
-        }
-    
-        .post-card-username {
-          font-size: 16px;
-          font-weight: 600;
-          padding-right: 4px;
-          cursor: pointer;
-        }
-    
-        .post-card-timestamp {
-            font-size: 12px;
-            color: #8a8a8a;
-        }
-    
-        .post-card-status {
+      .post-card-image {
+        margin-right: 10px;
+        width: 40px;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        border: 1px solid rgb(170, 170, 170);
+        object-fit: cover;
+        cursor: pointer;
+      }
+    }
+
+    .post-content-container {
+      .name-timestamp {
+        display: flex;
+        align-items: center;
+      }
+
+      .post-card-username {
+        font-size: 16px;
+        font-weight: 600;
+        padding-right: 4px;
+        cursor: pointer;
+      }
+
+      .post-card-timestamp {
+        font-size: 12px;
+        color: #8a8a8a;
+      }
+
+      .post-card-status {
+        font-size: 14px;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+
+        p {
           font-size: 14px;
+          color: #757575;
         }
-    
-        .actions {
-          display: flex;
-          flex-direction: column;
-    
-          p {
-            font-size: 14px;
-            color: #757575;
-          }
-    
-          .like-comment {
-            display: flex;
-            color: #757575;
-            gap: 20px;
-          }
-        }
-    }
 
+        .like-comment {
+          display: flex;
+          color: #757575;
+          gap: 20px;
+        }
+      }
+    }
   }
 
   .comments-container {
@@ -96,6 +107,7 @@
 
           .profile-card-image {
             margin-right: 10px;
+            margin-top: 4px;
             width: 40px;
             height: 40px;
             border-radius: 50%;
