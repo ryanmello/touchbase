@@ -162,6 +162,16 @@ export const editPost = (postId, status) => {
   }
 };
 
+export const deletePost = (postId) => {
+  let postToDelete = doc(postsRef, postId);
+  try {
+    deleteDoc(postToDelete);
+    toast.success("Post deleted")
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // get all comments for each post from the database
 export const getComments = (setAllComments, postId) => {
   const commentQuery = query(commentsRef, where("postId", "==", postId));

@@ -7,6 +7,7 @@ import { getLikesByUser, getAllUsers } from "../../../api/FirestoreAPI";
 import { getComments } from "../../../api/FirestoreAPI";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import EditPostModal from "../EditPostModal/EditPostModal";
+import { deletePost } from "../../../api/FirestoreAPI";
 
 const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
   let redirect = useNavigate();
@@ -38,7 +39,7 @@ const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
               className="action-icon"
               onClick={() => setShowEditPostModal(true)}
             ></BsPencil>
-            <BsTrash className="action-icon"></BsTrash>
+            <BsTrash className="action-icon" onClick={() => deletePost(post.id)}></BsTrash>
           </div>
         ) : (
           <></>
