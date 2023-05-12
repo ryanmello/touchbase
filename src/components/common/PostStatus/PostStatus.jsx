@@ -11,7 +11,6 @@ const PostStatus = ({ currentUser }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [allPosts, setAllPosts] = useState([]);
-  let currentUserId = currentUser.userId;
 
   const sendStatus = () => {
     let object = {
@@ -20,7 +19,7 @@ const PostStatus = ({ currentUser }) => {
       userEmail: currentUser.email,
       userName: currentUser.name,
       postId: getUniqueId(),
-      userId: currentUserId,
+      userId: currentUser.userId,
     };
 
     postStatus(object);
@@ -50,7 +49,11 @@ const PostStatus = ({ currentUser }) => {
       {allPosts.map((post) => {
         return (
           <div key={post.postId} className="post-card-alignment">
-            <PostCard post={post} currentUser={currentUser} id={currentUserId}/>
+            <PostCard
+              post={post}
+              currentUser={currentUser}
+              id={currentUser.userId}
+            />
           </div>
         );
       })}

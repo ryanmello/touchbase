@@ -47,7 +47,7 @@ export const getAllUsers = (setAllUsers) => {
       })
     );
   });
-} 
+};
 
 // get all posts from a user with all posts and the post id
 export const getSingleStatus = (setAllStatus, id) => {
@@ -84,7 +84,6 @@ export const getCurrentUser = (setCurrentUser) => {
     );
   });
 };
-
 
 // get single user
 export const getSingleUser = (setCurrentUser, email) => {
@@ -127,15 +126,11 @@ export const likePost = (userId, postId, liked) => {
 
 export const getLikesByUser = (userId, postId, setLiked, setLikesCount) => {
   try {
-    // contains all documents with corresponding postId
     let likeQuery = query(likesRef, where("postId", "==", postId));
 
     onSnapshot(likeQuery, (response) => {
-      // likes is all the data from the documents with the postId as objects
       let likes = response.docs.map((doc) => doc.data());
-      // get the length of the data
       let likesCount = likes.length;
-      // returns true if one of the documents in likes contains userId
       const isLiked = likes.some((like) => like.userId === userId);
 
       setLikesCount(likesCount);
@@ -157,6 +152,16 @@ export const commentPost = (object) => {
     });
 };
 
+export const editPost = (postId, status) => {
+  let postToEdit = doc(postsRef, postId);
+  try {
+    updateDoc(postToEdit, { status });
+    toast.success("Success!");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // get all comments for each post from the database
 export const getComments = (setAllComments, postId) => {
   const commentQuery = query(commentsRef, where("postId", "==", postId));
@@ -165,8 +170,8 @@ export const getComments = (setAllComments, postId) => {
       return {
         id: doc.id,
         ...doc.data(),
-      }
-    })
-    setAllComments(comments)
+      };
+    });
+    setAllComments(comments);
   });
 };

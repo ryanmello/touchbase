@@ -15,13 +15,16 @@ const LikeButton = ({ userId, postId }) => {
 
   useMemo(() => {
     getLikesByUser(userId, postId, setLiked, setLikesCount);
-  }, [userId, postId])
-
+  }, [userId, postId]);
 
   return (
     <div className="like-container" onClick={handleLike}>
-      {liked? <AiFillLike size={20} color="0079bb"/> : <AiOutlineLike size={20} />}
-      <p className={liked ? 'blue' : 'black'}>{liked ? "Liked" : "Like"}</p>
+      {liked ? (
+        <AiFillLike size={20} color="0079bb" />
+      ) : (
+        <AiOutlineLike size={20} />
+      )}
+      <p className={liked ? "blue" : "black"}>{liked ? "Liked" : "Like"}</p>
     </div>
   );
 };

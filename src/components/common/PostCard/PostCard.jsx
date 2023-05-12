@@ -5,15 +5,17 @@ import LikeButton from "../LikeButton/LikeButton";
 import CommentButton from "../CommentButton/CommentButton";
 import { getLikesByUser, getAllUsers } from "../../../api/FirestoreAPI";
 import { getComments } from "../../../api/FirestoreAPI";
-import { BsPencil, BsTrash} from 'react-icons/bs'
+import { BsPencil, BsTrash } from "react-icons/bs";
+import EditPostModal from "../EditPostModal/EditPostModal";
 
-const PostCard = ({ post, currentUser, id }) => {
+const PostCard = ({ post, currentUser, id, getEditData }) => {
   let redirect = useNavigate();
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [allComments, setAllComments] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const [showEditPostModal, setShowEditPostModal] = useState(false);
 
   useMemo(() => {
     getLikesByUser(post.userId, post.id, setLiked, setLikesCount);
@@ -21,19 +23,22 @@ const PostCard = ({ post, currentUser, id }) => {
     getAllUsers(setAllUsers);
   }, []);
 
-  console.log(
-    allUsers
-      .filter((item) => item.userId === post.userId)
-      .map((item) => item.imageLink)[0]
-  );
-
   return (
     <div className="post-card-container">
+      <EditPostModal
+        showEditPostModal={showEditPostModal}
+        setShowEditPostModal={setShowEditPostModal}
+        post={post}
+        postStatus={post.status}
+      />
       <div className="post-card" key={id}>
-          <div className="action-container">
-            <BsPencil className="action-icon"></BsPencil>
-            <BsTrash className="action-icon"></BsTrash>
-          </div>
+        <div className="action-container">
+          <BsPencil
+            className="action-icon"
+            onClick={() => setShowEditPostModal(true)}
+          ></BsPencil>
+          <BsTrash className="action-icon"></BsTrash>
+        </div>
         <div className="post-card-image-container">
           <img
             className="post-card-image"

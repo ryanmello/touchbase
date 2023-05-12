@@ -19,7 +19,12 @@
 
       .action-icon{
         cursor: pointer;
+        color: #8a8a8a;
         margin-right: 10px;
+      }
+
+      .action-icon:hover{
+        color: #000000;
       }
     }
 
@@ -66,12 +71,12 @@
 
         p {
           font-size: 14px;
-          color: #757575;
+          color: #8a8a8a;
         }
 
         .like-comment {
           display: flex;
-          color: #757575;
+          color: #8a8a8a;
           gap: 20px;
         }
       }
