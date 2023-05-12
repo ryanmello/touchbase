@@ -64,7 +64,7 @@ const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
                 })
               }
             >
-              {post.userName}
+              {allUsers.filter((user) => user.userId === post.userId)[0]?.name}
             </p>
             <p className="post-card-timestamp"> • {post.timeStamp}</p>
           </div>
@@ -105,7 +105,7 @@ const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
                     <div>
                       <div className="name-timestamp">
                         <div className="comment-content-name">
-                          {comment.name}
+                          {allUsers.filter((user) => user.userId === comment.userId)[0]?.name}
                         </div>
                         <p className="comment-content-timestamp">
                           • {comment.timeStamp}
