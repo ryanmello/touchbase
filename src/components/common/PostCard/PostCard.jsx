@@ -8,7 +8,7 @@ import { getComments } from "../../../api/FirestoreAPI";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import EditPostModal from "../EditPostModal/EditPostModal";
 
-const PostCard = ({ post, currentUser, id, getEditData }) => {
+const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
   let redirect = useNavigate();
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
@@ -31,14 +31,18 @@ const PostCard = ({ post, currentUser, id, getEditData }) => {
         post={post}
         postStatus={post.status}
       />
-      <div className="post-card" key={id}>
-        <div className="action-container">
-          <BsPencil
-            className="action-icon"
-            onClick={() => setShowEditPostModal(true)}
-          ></BsPencil>
-          <BsTrash className="action-icon"></BsTrash>
-        </div>
+      <div className="post-card" key={currentUserId}>
+        {post.userId == currentUserId ? (
+          <div className="action-container">
+            <BsPencil
+              className="action-icon"
+              onClick={() => setShowEditPostModal(true)}
+            ></BsPencil>
+            <BsTrash className="action-icon"></BsTrash>
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="post-card-image-container">
           <img
             className="post-card-image"
@@ -70,13 +74,13 @@ const PostCard = ({ post, currentUser, id, getEditData }) => {
               this post{" "}
             </p>
             <div className="like-comment">
-              <LikeButton userId={id} postId={post.id} />
+              <LikeButton userId={currentUserId} postId={post.id} />
               <CommentButton
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
                 post={post}
                 currentUser={currentUser}
-                currentUserId={id}
+                currentUserId={currentUserId}
               />
             </div>
           </div>

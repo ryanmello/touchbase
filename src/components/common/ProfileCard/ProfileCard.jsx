@@ -47,14 +47,29 @@ const ProfileCard = ({ currentUser, onEdit }) => {
           ) : (
             <></>
           )}
-          <HiOutlinePencil className="edit-btn" size={30} onClick={onEdit} />
+
+          {Object.values(currentProfile).length === 0 ? (
+            <HiOutlinePencil className="edit-btn" size={30} onClick={onEdit} />
+          ) : (
+            <></>
+          )}
+
           <div className="items-container">
             <div className="left-items">
-              <img
-                className="image"
-                src={currentUser.imageLink}
-                onClick={() => setShowFileUploadModal(!showFileUploadModal)}
-              ></img>
+              <div>
+                {Object.values(currentProfile).length === 0 ? (
+                  <img
+                    className="image"
+                    src={currentUser.imageLink}
+                    onClick={() => setShowFileUploadModal(!showFileUploadModal)}
+                  ></img>
+                ) : (
+                  <img
+                    className="image"
+                    src={currentProfile?.imageLink}
+                  ></img>
+                )}
+              </div>
               <h3 className="username">
                 {Object.values(currentProfile).length === 0
                   ? currentUser.name

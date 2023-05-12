@@ -52,7 +52,7 @@ const PostStatus = ({ currentUser }) => {
             <PostCard
               post={post}
               currentUser={currentUser}
-              id={currentUser.userId}
+              currentUserId={currentUser.userId}
             />
           </div>
         );
