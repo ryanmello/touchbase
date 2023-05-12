@@ -1,20 +1,46 @@
 .post-status-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
     .post-status{
         max-width: 80%;
         width: 800px;
-        height: 120px;
+        height: auto;
         margin-top: 30px;
         background-color: white;
         border: 1px solid #ebebeb;
         border-radius: 10px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        .profile-items{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60%;
+            padding-top: 20px;
+            padding-bottom: 10px;
+
+            .image{
+                width: 80px;
+                border-radius: 50%;
+                border: 1px solid rgb(170, 170, 170);
+            }
+
+            .image:hover{
+                cursor: pointer;
+            }
+
+            .headline{
+                font-size: 12px;
+                color: #8a8a8a;
+                margin-top: -5px;
+            }
+        }
+
 
         .open-post-modal{
             cursor: pointer;
@@ -27,6 +53,7 @@
             border: 1px solid #b7b7b7;
             padding-left: 20px;
             font-size: 14px;
+            margin-bottom: 20px;
         }
 
         .open-post-modal:hover{
