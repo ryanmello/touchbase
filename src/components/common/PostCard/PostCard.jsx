@@ -27,8 +27,8 @@ const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
   }, []);
 
   useEffect(() => {
-    getConnections(currentUser.userId, post.userId, setIsConnected);
-  }, [currentUser.userId, post.userId]);
+    getConnections(currentUserId, post.userId, setIsConnected);
+  }, []);
 
   return isConnected || currentUserId == post.userId ? (
     <div className="post-card-container">

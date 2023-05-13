@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ConnectedUser.scss";
-import { AiOutlinePlus } from "react-icons/ai";
+import { FaCheck } from "react-icons/fa";
+import { getConnections } from "../../../api/FirestoreAPI";
+import { addConnection } from "../../../api/FirestoreAPI";
 
 const ConnectedUser = ({ user, currentUser, getConnection }) => {
+  const [isConnected, setIsConnected] = useState(false);
+
+  useEffect(() => {
+    getConnections(currentUser.userId, user.id, setIsConnected);
+  }, []);
+
   return (
     <div className="connected-user-container" key={user.id}>
       <div className="connected-user">
@@ -13,9 +21,16 @@ const ConnectedUser = ({ user, currentUser, getConnection }) => {
         </div>
       </div>
       <div className="connect-btn-container">
-        <button onClick={() => getConnection(user.id)} className="connect-btn">
-          Connect
-        </button>
+        {isConnected ? (
+          <button className="connected-btn">Connected</button>
+        ) : (
+          <button
+            onClick={() => getConnection(user.id)}
+            className="connect-btn"
+          >
+            Connect
+          </button>
+        )}
       </div>
     </div>
   );

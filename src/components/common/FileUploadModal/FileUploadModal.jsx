@@ -47,7 +47,7 @@ const FileUploadModal = ({
         ]}
       >
         <div className="image-upload-container">
-          <label for="image-upload" className="upload-button">
+          <label htmlFor="image-upload" className="upload-button">
             Add An Image
           </label>
           {progress === 0 ? (

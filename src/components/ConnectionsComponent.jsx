@@ -8,13 +8,13 @@ import { getConnections } from "../api/FirestoreAPI";
 const ConnectionsComponent = ({ currentUser }) => {
   const [allUsers, setAllUsers] = useState([]);
 
-  const getConnection = (targetId) => {
-    addConnection(currentUser.userId, targetId);
-  };
-
   useEffect(() => {
     getAllUsers(setAllUsers);
   }, []);
+
+  const getConnection = (targetId) => {
+    addConnection(currentUser.userId, targetId);
+  };
 
   return (
     <div className="connection-component">

@@ -187,11 +187,11 @@ export const getComments = (setAllComments, postId) => {
   });
 };
 
-export const addConnection = (userId, targetId, isConnected) => {
+export const addConnection = (userId, targetId) => {
   try {
     let connection = doc(connectionsRef, `${userId}_${targetId}`);
     setDoc(connection, { userId, targetId });
-    toast.success("Success!")
+    toast.success("Success!");
   } catch (error) {
     console.log(error);
   }
@@ -199,15 +199,19 @@ export const addConnection = (userId, targetId, isConnected) => {
 
 export const getConnections = (currentUserId, targetId, setIsConnected) => {
   try {
-    let connectionQuery = query(connectionsRef, where("targetId", "==", targetId));
+    let connectionQuery = query(
+      connectionsRef,
+      where("targetId", "==", targetId)
+    );
 
     onSnapshot(connectionQuery, (response) => {
       let connections = response.docs.map((doc) => doc.data());
 
-      const isConnected = connections.some((connection) => connection.userId === currentUserId);
+      const isConnected = connections.some(
+        (connection) => connection.userId === currentUserId
+      );
       setIsConnected(isConnected);
     });
-
   } catch (error) {
     console.log(error);
   }
