@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HomeComponent from "../components/common/HomeComponent";
+import HomeComponent from "../components/HomeComponent";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useEffect } from "react";
@@ -19,7 +19,7 @@ const Home = ({ currentUser }) => {
     });
   }, []);
 
-  return loading ? <Loader /> : <HomeComponent currentUser={currentUser}/>;
+  return loading ? <Loader /> : <HomeComponent currentUser={currentUser} />;
 };
 
 export default Home;

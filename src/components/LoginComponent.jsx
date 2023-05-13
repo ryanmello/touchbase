@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { LoginAPI, RegisterAPI, GoogleSignInAPI } from "../../api/AuthAPI.jsx";
-import "../../sass/LoginComponent.scss";
-import LinkedInLogo from "../../assets/linkedinLogo.png";
+import { LoginAPI, RegisterAPI, GoogleSignInAPI } from "../api/AuthAPI.jsx";
+import "../sass/LoginComponent.scss";
+import LinkedInLogo from "../assets/linkedinLogo.png";
 import GoogleButton from "react-google-button";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -13,7 +13,7 @@ const LoginComponent = () => {
   const login = async () => {
     try {
       let res = await LoginAPI(credentials.email, credentials.password);
-      localStorage.setItem('userEmail', res.user.email);
+      localStorage.setItem("userEmail", res.user.email);
       toast.success("Success");
       redirect("/home");
     } catch (error) {
