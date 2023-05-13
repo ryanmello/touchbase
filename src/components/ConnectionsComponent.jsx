@@ -1,4 +1,5 @@
 import React from 'react'
+import "../sass/ConnectionsComponent.scss";
 
 const ConnectionsComponent = () => {
   return (

@@ -14,7 +14,7 @@ import { BsBriefcase } from "react-icons/bs";
 import User from "../../../assets/user.png";
 import ProfilePopup from "../ProfilePopup/ProfilePopup";
 
-const Topbar = () => {
+const Topbar = ({ currentUser }) => {
   const[popupVisible, setPopupVisible] = useState(false);
 
   const redirect = useNavigate();
@@ -43,11 +43,11 @@ const Topbar = () => {
         <AiOutlineSearch size={25} className="react-icon"/>
         <AiOutlineHome size={25} className="react-icon" onClick={() => goToRoute("/home")}/>
         <AiOutlineUserSwitch size={25} className="react-icon" onClick={() => goToRoute("/connections")}/>
-        <BsBriefcase size={25} className="react-icon" onClick={() => goToRoute("/jobs")}/>
+        {/* <BsBriefcase size={25} className="react-icon" onClick={() => goToRoute("/jobs")}/>
         <AiOutlineMessage size={25} className="react-icon" onClick={() => goToRoute("/messages")}/>
-        <AiOutlineBell size={25} className="react-icon" onClick={() => goToRoute("/notifications")}/>
+        <AiOutlineBell size={25} className="react-icon" onClick={() => goToRoute("/notifications")}/> */}
         <div className="user-container">
-            <img className="user" src={User} alt="" onClick={displayPopup}/>
+            <img className="user" src={currentUser.imageLink} alt="" onClick={displayPopup}/>
         </div>
       </div>
     </div>

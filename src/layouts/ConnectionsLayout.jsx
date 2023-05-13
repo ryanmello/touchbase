@@ -5,7 +5,7 @@ import Topbar from "../components/common/Topbar/Topbar";
 import { getCurrentUser } from "../api/FirestoreAPI";
 import { useMemo, useState } from "react";
 
-const ConnectionLayout = () => {
+const ConnectionsLayout = () => {
   const [currentUser, setCurrentUser] = useState({});
   useMemo(() => {
     getCurrentUser(setCurrentUser);
@@ -13,10 +13,10 @@ const ConnectionLayout = () => {
 
   return (
     <div>
-      <Topbar />
+      <Topbar currentUser={currentUser} />
       <Connections currentUser={currentUser}></Connections>
     </div>
   );
 };
 
-export default ConnectionLayout;
+export default ConnectionsLayout;
