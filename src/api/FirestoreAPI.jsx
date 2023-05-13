@@ -197,14 +197,17 @@ export const addConnection = (userId, targetId, isConnected) => {
   }
 };
 
-export const getConnections = (currentUserId) => {
+export const getConnections = (currentUserId, targetId, setIsConnected) => {
   try {
-    let connectionQuery = query(connectionsRef, where("userId", "==", currentUserId));
+    let connectionQuery = query(connectionsRef, where("targetId", "==", targetId));
 
     onSnapshot(connectionQuery, (response) => {
       let connections = response.docs.map((doc) => doc.data());
+
+      const isConnected = connections.some((connection) => connection.userId === currentUserId);
+      setIsConnected(isConnected);
     });
-    
+
   } catch (error) {
     console.log(error);
   }

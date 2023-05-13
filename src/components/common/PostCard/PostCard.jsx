@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import "./PostCard.scss";
 import { useNavigate } from "react-router-dom";
 import LikeButton from "../LikeButton/LikeButton";
@@ -8,6 +8,7 @@ import { getComments } from "../../../api/FirestoreAPI";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import EditPostModal from "../EditPostModal/EditPostModal";
 import { deletePost } from "../../../api/FirestoreAPI";
+import { getConnections } from "../../../api/FirestoreAPI";
 
 const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
   let redirect = useNavigate();
@@ -17,6 +18,7 @@ const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
   const [allComments, setAllComments] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [showEditPostModal, setShowEditPostModal] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
 
   useMemo(() => {
     getLikesByUser(post.userId, post.id, setLiked, setLikesCount);
@@ -24,7 +26,11 @@ const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
     getAllUsers(setAllUsers);
   }, []);
 
-  return (
+  useEffect(() => {
+    getConnections(currentUser.userId, post.userId, setIsConnected);
+  }, [currentUser.userId, post.userId]);
+
+  return isConnected || currentUserId == post.userId ? (
     <div className="post-card-container">
       <EditPostModal
         showEditPostModal={showEditPostModal}
@@ -39,7 +45,10 @@ const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
               className="action-icon"
               onClick={() => setShowEditPostModal(true)}
             ></BsPencil>
-            <BsTrash className="action-icon" onClick={() => deletePost(post.id)}></BsTrash>
+            <BsTrash
+              className="action-icon"
+              onClick={() => deletePost(post.id)}
+            ></BsTrash>
           </div>
         ) : (
           <></>
@@ -105,7 +114,11 @@ const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
                     <div>
                       <div className="name-timestamp">
                         <div className="comment-content-name">
-                          {allUsers.filter((user) => user.userId === comment.userId)[0]?.name}
+                          {
+                            allUsers.filter(
+                              (user) => user.userId === comment.userId
+                            )[0]?.name
+                          }
                         </div>
                         <p className="comment-content-timestamp">
                           • {comment.timeStamp}
@@ -126,6 +139,8 @@ const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
         <button className="comments-button">View More</button>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 

@@ -20,7 +20,7 @@ const ConnectionsComponent = ({ currentUser }) => {
     <div className="connection-component">
       {allUsers.map((user) => {
         return user.id === currentUser.userId ? (
-          <></>
+          <div key={user.id}></div>
         ) : (
           <ConnectedUser
             getConnection={getConnection}
