@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProfileComponent from "../components/ProfileComponent";
+import ProfileComponent from "../components/common/ProfileComponent";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useEffect } from "react";

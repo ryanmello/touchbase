@@ -1,8 +1,8 @@
 import React from "react";
-import ProfileCard from "./common/ProfileCard/ProfileCard";
+import ProfileCard from "./ProfileCard/ProfileCard";
 import { useState } from "react";
-import ProfileEdit from "./common/ProfileEdit/ProfileEdit"
-import Loader from "./common/Loader/Loader";
+import ProfileEdit from "./ProfileEdit/ProfileEdit"
+import Loader from "./Loader/Loader";
 
 const ProfileComponent = ({ currentUser }) => {
   const [isEdit, setIsEdit] = useState(false);

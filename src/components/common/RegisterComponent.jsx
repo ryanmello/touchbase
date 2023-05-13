@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { RegisterAPI } from "../api/AuthAPI.jsx";
-import { postUserData } from "../api/FirestoreAPI";
-import "../sass/RegisterComponent.scss";
-import LinkedInLogo from "../assets/linkedinLogo.png";
+import { RegisterAPI } from "../../api/AuthAPI.jsx";
+import { postUserData } from "../../api/FirestoreAPI.jsx";
+import "../../sass/RegisterComponent.scss";
+import LinkedInLogo from "../../assets/linkedinLogo.png";
 import GoogleButton from "react-google-button";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getUniqueId } from "../helpers/getUniqueId.jsx";
+import { getUniqueId } from "../../helpers/getUniqueId.jsx";
 
 const RegisterComponent = () => {
   const [credentials, setCredentials] = useState();

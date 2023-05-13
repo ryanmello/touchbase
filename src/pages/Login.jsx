@@ -1,5 +1,5 @@
 import React from "react";
-import LoginComponent from "../components/LoginComponent";
+import LoginComponent from "../components/common/LoginComponent";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useEffect, useState } from "react";
