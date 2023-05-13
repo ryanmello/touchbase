@@ -1,16 +1,18 @@
 import React from "react";
 import "./PostStatus.scss";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import PostModal from "../PostModal/PostModal";
 import { postStatus, getStatus } from "../../../api/FirestoreAPI";
 import PostCard from "../PostCard/PostCard";
 import { getCurrentTimeStamp } from "../../../helpers/useMoment";
 import { getUniqueId } from "../../../helpers/getUniqueId";
+import { getConnections } from "../../../api/FirestoreAPI";
 
 const PostStatus = ({ currentUser }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [allPosts, setAllPosts] = useState([]);
+  const [isConnected, setIsConnected] = useState(false);
 
   const sendStatus = () => {
     let object = {
@@ -30,6 +32,10 @@ const PostStatus = ({ currentUser }) => {
   useMemo(() => {
     getStatus(setAllPosts);
   }, []);
+
+  useEffect(() => {
+    getConnections();
+  }, [currentUser.userId]);
 
   return (
     <div className="post-status-container">

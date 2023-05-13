@@ -1,0 +1,52 @@
+.connected-user-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  justify-content: space-between;
+  max-width: 80%;
+  width: 800px;
+  margin-bottom: 20px;
+  padding: 12px 20px 12px 20px;
+  border-radius: 20px;
+
+  .connected-user {
+    display: flex;
+    align-items: center;
+
+    .user-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+
+      .user-name {
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .user-headline {
+        font-size: 14px;
+        color: #8a8a8a;
+      }
+    }
+  }
+
+  .connect-btn-container {
+    .connect-btn {
+        display: flex;
+        align-items: center;
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #0073b1;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+    }
+  }
+}
