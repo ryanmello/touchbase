@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./PostModal.scss";
 import { Button, Modal } from "antd";
 import { AiOutlinePicture } from "react-icons/ai";
@@ -13,6 +13,7 @@ const PostModal = ({
   setPostImageLink,
   uploadPostImage,
 }) => {
+  const [progress, setProgress] = useState(0);
 
   const handleModalClose = () => {
     setModalOpen(false);
@@ -47,7 +48,7 @@ const PostModal = ({
         <label className="image-label" htmlFor="file-upload">
           <AiOutlinePicture size={30} />
         </label>
-        <input hidden id="file-upload" type="file" onChange={(event) => uploadPostImage(event.target.files[0], setPostImageLink)}></input>
+        <input hidden id="file-upload" type="file" onChange={(event) => uploadPostImage(event.target.files[0], setPostImageLink, setProgress)}></input>
       </Modal>
     </div>
   );

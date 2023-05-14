@@ -28,7 +28,7 @@ export const uploadImage = (file, id, setShowFileUploadModal, setProgress) => {
   );
 };
 
-export const uploadPostImage = (file, setPostImageLink) => {
+export const uploadPostImage = (file, setPostImageLink, setProgress) => {
   const postPicsRef = ref(storage, `postImages/${file.name}`);
   const uploadTask = uploadBytesResumable(postPicsRef, file);
 
@@ -38,13 +38,15 @@ export const uploadPostImage = (file, setPostImageLink) => {
       const progress = Math.round(
         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
       );
+
+      setProgress(progress);
     },
     (error) => {
       console.log(error);
     },
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((response) => {
-        setPostImageLink(response)
+        setPostImageLink(response);
       });
     }
   );

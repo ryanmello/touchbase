@@ -163,6 +163,15 @@ export const editPost = (postId, status) => {
   }
 };
 
+export const editPostImage = (postId, imageLink) => {
+  let postToEdit = doc(postsRef, postId);
+  try {
+    updateDoc(postToEdit, { imageLink });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deletePost = (postId) => {
   let postToDelete = doc(postsRef, postId);
   try {

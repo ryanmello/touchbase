@@ -2,18 +2,36 @@ import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import "./EditPostModal.scss";
 import { editPost } from "../../../api/FirestoreAPI";
+import { AiOutlinePicture } from "react-icons/ai";
+import { uploadPostImage } from "../../../api/ImageUpload";
+import { editPostImage } from "../../../api/FirestoreAPI";
 
-const EditPostModal = ({ showEditPostModal, setShowEditPostModal, post, postStatus }) => {
-  const [status, setStatus] = useState(post.status)
+const EditPostModal = ({
+  showEditPostModal,
+  setShowEditPostModal,
+  post,
+  postStatus,
+}) => {
+  const [status, setStatus] = useState(post.status);
+  const [image, setImage] = useState(post.imageLink);
+  const [progress, setProgress] = useState(0);
+
+  console.log(image);
 
   const getInput = (event) => {
-    setStatus(event.target.value)
-  }
+    setStatus(event.target.value);
+  };
 
   const updatePost = () => {
     editPost(post.id, status);
-    setShowEditPostModal(false)
+    editPostImage(post.id, image);
+    setShowEditPostModal(false);
   };
+
+  const handleCancel = () => {
+    setShowEditPostModal(false)
+    setImage(post.imageLink)
+  }
 
   return (
     <div>
@@ -22,16 +40,16 @@ const EditPostModal = ({ showEditPostModal, setShowEditPostModal, post, postStat
         centered
         open={showEditPostModal}
         onOk={() => setShowEditPostModal(false)}
-        onCancel={() => setShowEditPostModal(false)}
+        onCancel={handleCancel}
         footer={[
-          <Button key="back" onClick={() => setShowEditPostModal(false)}>
+          <Button key="back" onClick={handleCancel}>
             Cancel
           </Button>,
           <Button
             key="submit"
             type="primary"
             onClick={updatePost}
-            disabled={status == post.status ? true : false}
+            disabled={status == post.status && image === post.imageLink ? true : false}
           >
             Edit Post
           </Button>,
@@ -44,6 +62,18 @@ const EditPostModal = ({ showEditPostModal, setShowEditPostModal, post, postStat
             onChange={getInput}
             name="comment"
           ></textarea>
+          <img className="image" src={image}></img>
+          <label className="label" htmlFor="input">
+            <AiOutlinePicture size={30} />
+          </label>
+          <input
+            onChange={(event) =>
+              uploadPostImage(event.target.files[0], setImage, setProgress)
+            }
+            hidden
+            id="input"
+            type="file"
+          ></input>
         </div>
       </Modal>
     </div>
