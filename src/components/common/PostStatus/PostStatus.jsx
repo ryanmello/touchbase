@@ -14,8 +14,6 @@ const PostStatus = ({ currentUser }) => {
   const [allPosts, setAllPosts] = useState([]);
   const [postImageLink, setPostImageLink] = useState("");
 
-  console.log(postImageLink)
-
   const sendStatus = () => {
     let object = {
       status: status,
@@ -24,12 +22,13 @@ const PostStatus = ({ currentUser }) => {
       userName: currentUser.name,
       postId: getUniqueId(),
       userId: currentUser.userId,
-      // imageLink: postImageLink,
+      imageLink: postImageLink,
     };
 
     postStatus(object);
     setModalOpen(false);
-    () => setStatus("");
+    setPostImageLink("");
+    setStatus("");
   };
 
   useMemo(() => {
@@ -55,6 +54,7 @@ const PostStatus = ({ currentUser }) => {
         status={status}
         setStatus={setStatus}
         sendStatus={sendStatus}
+        postImageLink={postImageLink}
         setPostImageLink={setPostImageLink}
         uploadPostImage={uploadPostImage}
       />

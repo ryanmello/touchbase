@@ -9,6 +9,7 @@ const PostModal = ({
   status,
   setStatus,
   sendStatus,
+  postImageLink,
   setPostImageLink,
   uploadPostImage,
 }) => {
@@ -42,6 +43,7 @@ const PostModal = ({
           className="modal-textarea"
           onChange={(event) => setStatus(event.target.value)}
         ></textarea>
+        <img src={postImageLink} className="image-preview"></img>
         <label className="image-label" htmlFor="file-upload">
           <AiOutlinePicture size={30} />
         </label>
