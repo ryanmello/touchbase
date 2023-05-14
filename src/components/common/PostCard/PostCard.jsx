@@ -10,7 +10,7 @@ import EditPostModal from "../EditPostModal/EditPostModal";
 import { deletePost } from "../../../api/FirestoreAPI";
 import { getConnections } from "../../../api/FirestoreAPI";
 
-const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
+const PostCard = ({ post, currentUser, currentUserId }) => {
   let redirect = useNavigate();
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
@@ -27,7 +27,7 @@ const PostCard = ({ post, currentUser, currentUserId, getEditData }) => {
   }, []);
 
   useEffect(() => {
-    getConnections(currentUserId, post.userId, setIsConnected);
+    getConnections(currentUser.userId, post.userId, setIsConnected);
   }, []);
 
   return isConnected || currentUserId == post.userId ? (

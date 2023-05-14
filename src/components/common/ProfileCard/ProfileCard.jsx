@@ -32,6 +32,8 @@ const ProfileCard = ({ currentUser, onEdit }) => {
     }
   }, []);
 
+  console.log(allPosts)
+
   return (
     <div className="profile-card">
       <div className="profile-card-container">
@@ -109,8 +111,8 @@ const ProfileCard = ({ currentUser, onEdit }) => {
       <div className="profile-posts">
         {allPosts.map((post) => {
           return (
-            <div key={post.postId} className="profile-card">
-              <PostCard post={post} id={currentUser.userId} />
+            <div key={post.id} className="profile-card">
+              <PostCard post={post} currentUser={currentUser} currentUserId={currentUser.userId}/>
             </div>
           );
         })}
