@@ -191,7 +191,6 @@ export const addConnection = (userId, targetId) => {
   try {
     let connection = doc(connectionsRef, `${userId}_${targetId}`);
     setDoc(connection, { userId, targetId });
-    toast.success("Success!");
   } catch (error) {
     console.log(error);
   }
@@ -201,7 +200,6 @@ export const removeConnection = (currentUserId, targetId) => {
   let connectionToRemove = doc(connectionsRef, `${currentUserId}_${targetId}`);
   try {
     deleteDoc(connectionToRemove);
-    toast.success("Connection removed");
   } catch (error) {
     console.log(error);
   }
