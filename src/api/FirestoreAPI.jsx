@@ -197,6 +197,16 @@ export const addConnection = (userId, targetId) => {
   }
 };
 
+export const removeConnection = (currentUserId, targetId) => {
+  let connectionToRemove = doc(connectionsRef, `${currentUserId}_${targetId}`);
+  try {
+    deleteDoc(connectionToRemove);
+    toast.success("Connection removed");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getConnections = (currentUserId, targetId, setIsConnected) => {
   try {
     let connectionQuery = query(

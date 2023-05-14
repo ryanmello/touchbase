@@ -3,6 +3,7 @@ import "./ConnectedUser.scss";
 import { FaCheck } from "react-icons/fa";
 import { getConnections } from "../../../api/FirestoreAPI";
 import { addConnection } from "../../../api/FirestoreAPI";
+import { removeConnection } from "../../../api/FirestoreAPI";
 
 const ConnectedUser = ({ user, currentUser, getConnection }) => {
   const [isConnected, setIsConnected] = useState(false);
@@ -10,6 +11,11 @@ const ConnectedUser = ({ user, currentUser, getConnection }) => {
   useEffect(() => {
     getConnections(currentUser.userId, user.id, setIsConnected);
   }, []);
+
+  const deleteConnection = () => {
+    removeConnection(currentUser.userId, user.id);
+    setIsConnected(false);
+  };
 
   return (
     <div className="connected-user-container" key={user.id}>
@@ -22,7 +28,9 @@ const ConnectedUser = ({ user, currentUser, getConnection }) => {
       </div>
       <div className="connect-btn-container">
         {isConnected ? (
-          <button className="connected-btn">Connected</button>
+          <button onClick={() => deleteConnection()} className="connected-btn">
+            Connected
+          </button>
         ) : (
           <button
             onClick={() => getConnection(user.id)}
