@@ -6,11 +6,15 @@ import { postStatus, getStatus } from "../../../api/FirestoreAPI";
 import PostCard from "../PostCard/PostCard";
 import { getCurrentTimeStamp } from "../../../helpers/useMoment";
 import { getUniqueId } from "../../../helpers/getUniqueId";
+import { uploadPostImage } from "../../../api/ImageUpload";
 
 const PostStatus = ({ currentUser }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [allPosts, setAllPosts] = useState([]);
+  const [postImageLink, setPostImageLink] = useState("");
+
+  console.log(postImageLink)
 
   const sendStatus = () => {
     let object = {
@@ -20,6 +24,7 @@ const PostStatus = ({ currentUser }) => {
       userName: currentUser.name,
       postId: getUniqueId(),
       userId: currentUser.userId,
+      // imageLink: postImageLink,
     };
 
     postStatus(object);
@@ -50,6 +55,8 @@ const PostStatus = ({ currentUser }) => {
         status={status}
         setStatus={setStatus}
         sendStatus={sendStatus}
+        setPostImageLink={setPostImageLink}
+        uploadPostImage={uploadPostImage}
       />
 
       {allPosts.map((post) => {

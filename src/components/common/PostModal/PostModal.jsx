@@ -1,6 +1,7 @@
 import React from "react";
 import "./PostModal.scss";
 import { Button, Modal } from "antd";
+import { AiOutlinePicture } from "react-icons/ai";
 
 const PostModal = ({
   modalOpen,
@@ -8,7 +9,15 @@ const PostModal = ({
   status,
   setStatus,
   sendStatus,
+  setPostImageLink,
+  uploadPostImage,
 }) => {
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+    setPostImageLink("");
+  }
+
   return (
     <div>
       <Modal
@@ -16,7 +25,7 @@ const PostModal = ({
         centered
         open={modalOpen}
         onOk={() => setModalOpen(false)}
-        onCancel={() => setModalOpen(false)}
+        onCancel={handleModalClose}
         footer={[
           <Button
             onClick={sendStatus}
@@ -33,6 +42,10 @@ const PostModal = ({
           className="modal-textarea"
           onChange={(event) => setStatus(event.target.value)}
         ></textarea>
+        <label className="image-label" htmlFor="file-upload">
+          <AiOutlinePicture size={30} />
+        </label>
+        <input hidden id="file-upload" type="file" onChange={(event) => uploadPostImage(event.target.files[0], setPostImageLink)}></input>
       </Modal>
     </div>
   );
