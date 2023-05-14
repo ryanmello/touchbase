@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SearchUsers.scss";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const SearchUsers = ({
   setIsSearch,
@@ -9,10 +10,20 @@ const SearchUsers = ({
   allUsers,
 }) => {
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const redirect = useNavigate();
 
   const handleClose = () => {
     setIsSearch(false);
     setSearchInput("");
+  };
+
+  const openUser = (user) => {
+    redirect("/profile", {
+      state: {
+        id: user.id,
+        email: user.email,
+      },
+    });
   };
 
   const handleSearch = () => {
@@ -51,7 +62,11 @@ const SearchUsers = ({
       ) : (
         <div className="search-results">
           {filteredUsers.map((user) => (
-            <div className="search-result" key={user.id}>
+            <div
+              onClick={() => openUser(user)}
+              className="search-result"
+              key={user.id}
+            >
               <img src={user.imageLink}></img>
               <p>{user.name}</p>
             </div>
