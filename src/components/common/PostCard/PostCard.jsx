@@ -78,7 +78,11 @@ const PostCard = ({ post, currentUser, currentUserId }) => {
             <p className="post-card-timestamp"> • {post.timeStamp}</p>
           </div>
           <p className="post-card-status">{post.status}</p>
-          <img className="post-image" src={post.imageLink}></img>
+          {post.imageLink ? (
+            <img className="post-image" src={post.imageLink}></img>
+          ) : (
+            <></>
+          )}
           <div className="actions">
             <p>
               {likesCount} {likesCount === 1 ? "person likes" : "people like"}{" "}

@@ -29,9 +29,9 @@ const EditPostModal = ({
   };
 
   const handleCancel = () => {
-    setShowEditPostModal(false)
-    setImage(post.imageLink)
-  }
+    setShowEditPostModal(false);
+    setImage(post.imageLink);
+  };
 
   return (
     <div>
@@ -49,7 +49,9 @@ const EditPostModal = ({
             key="submit"
             type="primary"
             onClick={updatePost}
-            disabled={status == post.status && image === post.imageLink ? true : false}
+            disabled={
+              status == post.status && image === post.imageLink ? true : false
+            }
           >
             Edit Post
           </Button>,
