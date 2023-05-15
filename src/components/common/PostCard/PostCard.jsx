@@ -101,48 +101,52 @@ const PostCard = ({ post, currentUser, currentUserId }) => {
           </div>
         </div>
       </div>
-      <div className="comments-container">
-        <div className="recent-comment">
-          {allComments.length > 0 ? (
-            allComments.map((comment) => {
-              return (
-                <div className="comment-content" key={comment.id}>
-                  <div className="comment-heading">
-                    <img
-                      className="profile-card-image"
-                      src={
-                        allUsers
-                          .filter((item) => item.userId === comment.userId)
-                          .map((item) => item.imageLink)[0]
-                      }
-                    ></img>
-                    <div>
-                      <div className="name-timestamp">
-                        <div className="comment-content-name">
-                          {
-                            allUsers.filter(
-                              (user) => user.userId === comment.userId
-                            )[0]?.name
-                          }
+      {allComments.length > 0 ? (
+        <div className="comments-container">
+          <div className="recent-comment">
+            {allComments.length > 0 ? (
+              allComments.map((comment) => {
+                return (
+                  <div className="comment-content" key={comment.id}>
+                    <div className="comment-heading">
+                      <img
+                        className="profile-card-image"
+                        src={
+                          allUsers
+                            .filter((item) => item.userId === comment.userId)
+                            .map((item) => item.imageLink)[0]
+                        }
+                      ></img>
+                      <div>
+                        <div className="name-timestamp">
+                          <div className="comment-content-name">
+                            {
+                              allUsers.filter(
+                                (user) => user.userId === comment.userId
+                              )[0]?.name
+                            }
+                          </div>
+                          <p className="comment-content-timestamp">
+                            • {comment.timeStamp}
+                          </p>
                         </div>
-                        <p className="comment-content-timestamp">
-                          • {comment.timeStamp}
+                        <p className="comment-content-comment">
+                          {comment.comment}
                         </p>
                       </div>
-                      <p className="comment-content-comment">
-                        {comment.comment}
-                      </p>
                     </div>
                   </div>
-                </div>
-              );
-            })
-          ) : (
-            <></>
-          )}
+                );
+              })
+            ) : (
+              <></>
+            )}
+          </div>
+          <button className="comments-button">View More</button>
         </div>
-        <button className="comments-button">View More</button>
-      </div>
+      ) : (
+        <></>
+      )}
     </div>
   ) : (
     <></>

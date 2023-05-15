@@ -33,10 +33,10 @@ const RegisterComponent = () => {
 
   return (
     <div className="register-wrapper">
-      <img src={LinkedInLogo} className="linkedin-logo"></img>
+      <div className="touchbase-logo">TouchBase</div>
       <div className="register-wrapper-inner">
         <h1 className="heading">Register</h1>
-        <p className="subheading">Make the most of your professional life</p>
+        <p className="subheading">See what the world of sports is talking about</p>
         <div className="register-inputs">
           <input
             onChange={(e) =>

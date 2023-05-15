@@ -40,18 +40,20 @@ body {
   }
 }
 
-.linkedin-logo {
+.touchbase-logo {
   width: 80px;
   position: absolute;
   top: 20px;
   left: 20px;
+  font-weight: 800;
+  font-size: 30px;
 }
 
 .login-btn {
   width: 100%;
   height: 50px;
   cursor: pointer;
-  background-color: #0073b1;
+  background-color: #00c53b;
   border-radius: 30px;
   outline: none;
   border: none;
@@ -64,7 +66,7 @@ body {
 
 .login-btn:hover {
     transition: all 300ms;
-    background-color: #004c75;
+    background-color: #009b2e;
   }
 
 .hr-text {
@@ -94,17 +96,25 @@ body {
 }
 
 .join-now {
-  color: #0072b1;
+  color: #00c53b;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
 }
 
+.join-now:hover{
+  color: #009b2e;
+}
+
 .forgot-password {
-  color: #0072b1;
+  color: #00c53b;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+}
+
+.forgot-password:hover{
+  color: #009b2e
 }
 
 .google-btn-container{

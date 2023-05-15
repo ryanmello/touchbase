@@ -29,10 +29,10 @@ const LoginComponent = () => {
 
   return (
     <div className="login-wrapper">
-      <img src={LinkedInLogo} className="linkedin-logo"></img>
+      <div className="touchbase-logo">TouchBase</div>
       <div className="login-wrapper-inner">
         <h1 className="heading">Sign in</h1>
-        <p className="subheading">Stay updated on your professional world</p>
+        <p className="subheading">Home of sports enthusiasts</p>
         <div className="auth-inputs">
           <input
             onChange={(e) =>
@@ -59,7 +59,6 @@ const LoginComponent = () => {
       <hr className="hr-text" data-content="or" />
       <div className="google-btn-container">
         <p className="go-to-signup">
-          New to LinkedIn?{" "}
           <span className="join-now" onClick={() => redirect("/register")}>
             Join now
           </span>

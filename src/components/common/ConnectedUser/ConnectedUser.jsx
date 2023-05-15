@@ -29,14 +29,14 @@ const ConnectedUser = ({ user, currentUser, getConnection }) => {
       <div className="connect-btn-container">
         {isConnected ? (
           <button onClick={() => deleteConnection()} className="connected-btn">
-            Connected
+            Unfollow
           </button>
         ) : (
           <button
             onClick={() => getConnection(user.id)}
             className="connect-btn"
           >
-            Connect
+            Follow
           </button>
         )}
       </div>
