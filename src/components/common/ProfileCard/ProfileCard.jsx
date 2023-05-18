@@ -32,8 +32,6 @@ const ProfileCard = ({ currentUser, onEdit }) => {
     }
   }, []);
 
-  console.log(allPosts)
-
   return (
     <div className="profile-card">
       <div className="profile-card-container">

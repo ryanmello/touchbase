@@ -13,6 +13,8 @@ const PostStatus = ({ currentUser }) => {
   const [status, setStatus] = useState("");
   const [allPosts, setAllPosts] = useState([]);
   const [postImageLink, setPostImageLink] = useState("");
+  const [topicValue, setTopicValue] = useState('');
+  const [topics, setTopics] = useState([]);
 
   const sendStatus = () => {
     let object = {
@@ -57,6 +59,10 @@ const PostStatus = ({ currentUser }) => {
         postImageLink={postImageLink}
         setPostImageLink={setPostImageLink}
         uploadPostImage={uploadPostImage}
+        topicValue={topicValue}
+        setTopicValue={setTopicValue}
+        topics={topics}
+        setTopics={setTopics}
       />
 
       {allPosts.map((post) => {

@@ -16,8 +16,6 @@ const EditPostModal = ({
   const [image, setImage] = useState(post.imageLink);
   const [progress, setProgress] = useState(0);
 
-  console.log(image);
-
   const getInput = (event) => {
     setStatus(event.target.value);
   };
