@@ -60,6 +60,7 @@ const PostModal = ({
         ]}
       >
         <textarea
+          value={status}
           placeholder="What do you want to talk about?"
           className="modal-textarea"
           onChange={(event) => setStatus(event.target.value)}
@@ -80,7 +81,7 @@ const PostModal = ({
         <ul className="topic-list">
           {topics.map((topic, index) => (
             <li className="topic" key={index} >
-              <p onClick={() => removeTopic(index)}>{topic}</p>
+              <p value={topic} onClick={() => removeTopic(index)}>{topic}</p>
             </li>
           ))}
         </ul>

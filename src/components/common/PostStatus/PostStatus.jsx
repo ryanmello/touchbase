@@ -25,12 +25,14 @@ const PostStatus = ({ currentUser }) => {
       postId: getUniqueId(),
       userId: currentUser.userId,
       imageLink: postImageLink,
+      topics: topics,
     };
 
     postStatus(object);
     setModalOpen(false);
     setPostImageLink("");
     setStatus("");
+    setTopics([]);
   };
 
   useMemo(() => {

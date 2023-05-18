@@ -19,6 +19,9 @@ const PostCard = ({ post, currentUser, currentUserId }) => {
   const [allUsers, setAllUsers] = useState([]);
   const [showEditPostModal, setShowEditPostModal] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
+  const [allTopics, setAllTopics] = useState(post.topics);
+
+  console.log(allTopics)
 
   useMemo(() => {
     getLikesByUser(post.userId, post.id, setLiked, setLikesCount);
@@ -83,6 +86,11 @@ const PostCard = ({ post, currentUser, currentUserId }) => {
           ) : (
             <></>
           )}
+          <div className="topic-list">
+            {post.topics?.map((topic) => (
+              <p className="post-topic">{topic}</p>
+            ))}
+          </div>
           <div className="actions">
             <p>
               {likesCount} {likesCount === 1 ? "person likes" : "people like"}{" "}
