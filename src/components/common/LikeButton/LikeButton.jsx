@@ -20,7 +20,7 @@ const LikeButton = ({ userId, postId }) => {
   return (
     <div className="like-container" onClick={handleLike}>
       {liked ? (
-        <AiFillLike size={20} color="009b2e" />
+        <AiFillLike size={20} color="187BCD" />
       ) : (
         <AiOutlineLike size={20} />
       )}
